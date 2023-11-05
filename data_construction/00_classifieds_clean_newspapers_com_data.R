@@ -4,6 +4,7 @@ library(tidyverse)
 library(lubridate)
 library(data.table)
 library(readxl)
+library(haven)
 library(glue)
 
 ## change to directory where archive was extracted
@@ -85,3 +86,4 @@ npcom_pages[np_name == "mcalesternewscapitalanddemocratOK", np_name := "mcaleste
 
 
 save(npcom_pages, file = glue("{data_dir}/Newspapers.com/npcom_classified_pages_with_totals_corrected.RData"))
+write_dta(npcom_pages, path = glue("{data_dir}/Newspapers.com/npcom_classified_pages_with_totals_corrected.dta"))
