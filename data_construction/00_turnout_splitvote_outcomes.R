@@ -137,14 +137,6 @@ votes_wide[,`:=` (house_dev = abs(r_share_pres - r_share_house),
 
 votes_wide[, avg_dev := if_else(!is.na(sen_dev), (house_dev + sen_dev) / 2, house_dev)]
 
-
-# house rolloff in simultaneous presidential election
-votes_wide[,`:=` (turnout_house_mid = if_else(year %% 4 == 2, turnout_house, as.numeric(NA)),
-				  turnout_house_pres = if_else(year %% 4 == 0, turnout_house, as.numeric(NA)),
-				  house_rolloff = turnout_pres - turnout_house)]
-
-# house rolloff against pres in previous pres year
+# export
 votes_wide <- votes_wide[order(fips, year)]
-votes_wide[,house_rolloff_lagged := lag(turnout_pres) - turnout_house, by = .(fips)]
-
 write_dta(votes_wide, path=glue("{data_dir}/political/turnout_data_notmerged.dta"))

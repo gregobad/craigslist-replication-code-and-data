@@ -447,6 +447,7 @@ X_news <- as.matrix(naes[, news_names, with = F])
 naes[, pred_cl := X_cl %*% beta_cl_naes]
 naes[, pred_news := X_news %*% beta_news_naes]
 
-naes[, .(pred_cl, pred_news)] %>% write_dta(glue("{data_dir}/annenberg/annenberg2000-2004-2008_preds.dta"))
+naes[, .(ckey, pred_cl, pred_news)] %>% write_dta(glue("{data_dir}/annenberg/annenberg2000-2004-2008_preds.dta"))
+
 summary(naes[, .(pred_cl, pred_news)])
 with(naes, cor(pred_cl, pred_news, use = "pairwise.complete.obs"))
