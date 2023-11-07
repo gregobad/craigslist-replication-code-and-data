@@ -20,7 +20,7 @@ Figure 3   | `?.do` |
 Figure 4   | `?.do` | Yes
 Figure 5   | `?.do` |
 Table 1    | `?.do` |
-Table 2    | `regressions_npcom_pages.R` |
+Table 2    | `?.do` |
 Table 3    | `?.do` |
 Table 4    | `?.do` |
 Table 5    | `?.do` | 
@@ -38,7 +38,7 @@ Figure B.1 | N/A |
 Figure B.2 | N/A |  
 Figure B.3 | N/A | 
 Figure B.4 | `?.do` | Yes
-Figure B.5 | `predict_classified_interest_gfk.R` | Yes
+Figure B.5 | `?.do` | Yes
 Figure B.6 | `?.do` | 
 Figure B.7 | `?.do` | 
 Table A.1  | `?.do` | 
@@ -52,16 +52,16 @@ Table A.8  | `?.do` |
 Table A.9  | `?.do` | 
 Table A.10  | `?.do` | 
 Table A.11 | `?.do` | 
-Table A.12  | `regressions_npcom_pages.R` | 
+Table A.12  | `?.do` | 
 Table A.13  | `?.do` | Yes
 Table A.14 | `?.do` | Yes
 Table A.15  | `?.do` | 
 Table A.16  | `?.do` | 
 Table A.17  | `?.do` | 
-Table A.18  | `regressions_newsbank_mentions.R` | 
-Table A.19  | `regressions_newsbank_mentions.R` | 
-Table A.20  | `regressions_newsbank_mentions.R` |
-Table B.1  | `regressions_npcom_pages.R` | 
+Table A.18  | `?.do` | 
+Table A.19  | `?.do` | 
+Table A.20  | `?.do` |
+Table B.1  | `?.do` | 
 Table B.2  | `?.do` |
 Table B.3  | `?.do` |
 
@@ -72,12 +72,13 @@ The `data` directory contains the main analysis data sets, `master_data_county_l
 
 Directory | Description
 ------ | ------ 
+`annenberg` | Predicted values of interest in news and classified sections given reader demographics, estimated in the National Annenberg Election Survey data (raw data not included)
 `census` | Data from the US census used to crosswalk census tracts to counties, and for intercensal population estimates at county level
 `Classified_Prices` | Data from SRDS on classified rates at the newspaper-year level
 `_counties_to_CDs` | Crosswalks from county to congressional district
 `craigslist_expansion` | Data on opening dates of local Craigslist sites
 `E&P` | Digitized data from the Editor and Publisher yearbooks
-`GfK-MRI` | Fitted models of interest in news and classified sections given reader demographics, estimated in the GfK-MRI data
+`GfK-MRI` | Fitted models and predicted values of interest in news and classified sections given reader demographics, estimated in the GfK-MRI data (raw data not included)
 `Newspapers.com` | Data on the number of classified pages per issue at the newspaper-year level, extracted from the Newspapers.com archive
 `Newspapers_content` | Keyword counts and topic models extracted from the NewsBank database of newspaper content
 `political` | Electoral data at county and county x congressional district level, along with information on members of congress used to generate keyword searches
@@ -91,6 +92,6 @@ There are four proprietary or access-restricted data sets used in the paper. The
 
 1. GfK-MRI Survey of the American Consumer. These data are used in the analysis of self-reported newspaper reading (reported in Table 6(a)). Contact `Adriane.Heimann@mrisimmons.com` for licensing inquiries.
 
-1. National Annenberg Election Survey (NAES) restricted data. [Visit the NAES home page to request access.](https://www.annenbergpublicpolicycenter.org/political-communication/naes/)
+1. National Annenberg Election Survey (NAES) restricted data. These data are used in the analysis of self-reported newspaper reading (reported in Table 6(b)). [Visit the NAES home page to request access.](https://www.annenbergpublicpolicycenter.org/political-communication/naes/)
 
 1. Comscore web traffic panel. These data are used in the analysis of visits to the Craigslist.org domain (Figure 4). Contact `zzz@comscore.com` for licensing inquiries.
