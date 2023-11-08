@@ -15,55 +15,55 @@ This repository contains replication code and data for Djourelova, Durante, and 
 Table / Figure | Code to Produce | Requires Proprietary Data?
 ------ | ------ | ------
 Figure 1   | `make_maps.R` | 
-Figure 2   | `?.do` | 
-Figure 3   | `?.do` |
-Figure 4   | `?.do` | Yes
-Figure 5   | `?.do` |
-Table 1    | `?.do` |
-Table 2    | `?.do` |
-Table 3    | `?.do` |
-Table 4    | `?.do` |
-Table 5    | `?.do` | 
-Table 6    | `?.do` | Yes
-Table 7    | `?.do` | 
+Figure 2   | `___do_Figures_Main.do` | 
+Figure 3   | `___do_Figures_Main.do` |
+Figure 4   | `___do_Figures_Main.do` | Yes
+Figure 5   | `___do_Figures_Main.do` |
+Table 1    | `___do_Tables_Main.do` |
+Table 2    | `___do_Tables_Main.do` |
+Table 3    | `___do_Tables_Main.do` |
+Table 4    | `___do_Tables_Main.do` |
+Table 5    | `___do_Tables_Main.do` | 
+Table 6    | `___do_Tables_Main.do` | Yes
+Table 7    | `___do_Tables_Main.do` | 
 
 
 # Appendix Figures / Tables to Source Code Index
 
 Table / Figure | Code to Produce | Requires Proprietary Data?
 ------ | ------ | ------
-Figure A.1   | `?.do` |
-Figure A.2   | `?.do` |
+Figure A.1   | `___do_Tables_Appendix.do` |
+Figure A.2   | `___do_Tables_Appendix.do` |
 Figure B.1 | N/A | 
 Figure B.2 | N/A |  
 Figure B.3 | N/A | 
-Figure B.4 | `?.do` | Yes
-Figure B.5 | `?.do` | Yes
-Figure B.6 | `?.do` | 
-Figure B.7 | `?.do` | 
+Figure B.4 | `___do_Figures_Appendix.do` | Yes
+Figure B.5 | `___do_Figures_Appendix.do` | Yes
+Figure B.6 | `___do_Figures_Appendix.do` | 
+Figure B.7 | `___do_Figures_Appendix.do` | 
 Table A.1  | `?.do` | 
-Table A.2  | `?.do`  | 
-Table A.3  | `?.do`  | 
-Table A.4  | `?.do` | 
-Table A.5  | `?.do` | 
-Table A.6  | `?.do` | 
-Table A.7  | `?.do` | 
-Table A.8  | `?.do` | 
-Table A.9  | `?.do` | 
-Table A.10  | `?.do` | 
-Table A.11 | `?.do` | 
-Table A.12  | `?.do` | 
-Table A.13  | `?.do` | Yes
-Table A.14 | `?.do` | Yes
-Table A.15  | `?.do` | 
-Table A.16  | `?.do` | 
-Table A.17  | `?.do` | 
-Table A.18  | `?.do` | 
-Table A.19  | `?.do` | 
-Table A.20  | `?.do` |
-Table B.1  | `?.do` | 
-Table B.2  | `?.do` |
-Table B.3  | `?.do` |
+Table A.2  | `___do_Tables_Appendix.do`  | 
+Table A.3  | `___do_Tables_Appendix.do`  | 
+Table A.4  | `___do_Tables_Appendix.do` | 
+Table A.5  | `___do_Tables_Appendix.do` | 
+Table A.6  | `___do_Tables_Appendix.do` | 
+Table A.7  | `___do_Tables_Appendix.do` | 
+Table A.8  | `___do_Tables_Appendix.do` | 
+Table A.9  | `___do_Tables_Appendix.do` | 
+Table A.10  | `___do_Tables_Appendix.do` | 
+Table A.11 | `___do_Tables_Appendix.do` | 
+Table A.12  | `___do_Tables_Appendix.do` | 
+Table A.13  | `___do_Tables_Appendix.do` | Yes
+Table A.14 | `___do_Tables_Appendix.do` | Yes
+Table A.15  | `___do_Tables_Appendix.do` | 
+Table A.16  | `___do_Tables_Appendix.do` | 
+Table A.17  | `___do_Tables_Appendix.do` | 
+Table A.18  | `___do_Tables_Appendix.do` | 
+Table A.19  | `___do_Tables_Appendix.do` | 
+Table A.20  | `___do_Tables_Appendix.do` |
+Table B.1  | `___do_Tables_Appendix.do` | 
+Table B.2  | `___do_Tables_Appendix.do` |
+Table B.3  | `___do_Tables_Appendix.do` | Yes
 
 # Description of Data Files
 
@@ -76,6 +76,7 @@ Directory | Description
 `census` | Data from the US census used to crosswalk census tracts to counties, and for intercensal population estimates at county level
 `Classified_Prices` | Data from SRDS on classified rates at the newspaper-year level
 `_counties_to_CDs` | Crosswalks from county to congressional district
+`_counties_to_DMAs` | Crosswalks from county to media market (DMA)
 `craigslist_expansion` | Data on opening dates of local Craigslist sites
 `E&P` | Digitized data from the Editor and Publisher yearbooks
 `GfK-MRI` | Fitted models and predicted values of interest in news and classified sections given reader demographics, estimated in the GfK-MRI data (raw data not included)
