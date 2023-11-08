@@ -95,4 +95,4 @@ There are four proprietary or access-restricted data sets used in the paper. The
 
 1. National Annenberg Election Survey (NAES) restricted data. These data are used in the analysis of self-reported newspaper reading (reported in Table 6(b)). [Visit the NAES home page to request access.](https://www.annenbergpublicpolicycenter.org/political-communication/naes/)
 
-1. Comscore web traffic panel. These data are used in the analysis of visits to the Craigslist.org domain (Figure 4). Contact `zzz@comscore.com` for licensing inquiries.
+1. Comscore WRDS web traffic panel. These data are used in the analysis of visits to the Craigslist.org domain (Figure 4). Visit https://wrds-www.wharton.upenn.edu/pages/about/data-vendors/comscore/ for licensing inquiries.
