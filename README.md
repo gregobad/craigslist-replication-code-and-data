@@ -63,7 +63,7 @@ Table A.19  | `___do_Tables_Appendix.do` |
 Table A.20  | `___do_Tables_Appendix.do` |
 Table B.1  | `___do_Tables_Appendix.do` | 
 Table B.2  | `___do_Tables_Appendix.do` |
-Table B.3  | `___do_Tables_Appendix.do` | Yes
+Table B.3  | `?.do` | Yes
 
 # Description of Data Files
 
