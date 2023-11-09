@@ -8,7 +8,7 @@ set more off
 
 
 
-use $base/master_data_newspaper_level, clear
+use $base/data/master_data_newspaper_level, clear
 
    
    
@@ -244,7 +244,8 @@ est clear
 
 
 
-
+/*
+/*
 
 **** Additional control for survey measure of Internet access
 
@@ -375,7 +376,8 @@ esttab  using $base_results/Appendix_Tables/Table_A2_c.tex, nomtitle r2 label re
 		stats(N NPNAME1_ r2 m, label( "Observations" "Number of newspapers" "R$^2$" "Mean dependent variable"  ) fmt(%13.0fc %13.0fc %9.2f %9.2f))
 est clear			
 			
-			
+*/
+*/			
 
 
    
@@ -1251,29 +1253,13 @@ est clear
 	
 	keep if year<=2000
 	
-	replace NPNAME1 = "tinleyparkdailysouthtownIL" /*
-				*/ if NPNAME1=="tinleyparksouthtownstarIL"
-	
-	replace NPNAME1 = "sanbernardinosunCA" /*
-				*/ if NPNAME1=="sanbernardinocountysunCA"
-	
-	replace NPNAME1 = "pottsvillerepublicanandeveningheraldPA" /*
-				*/ if NPNAME1=="pottsvillerepublicanPA"
-	
-	replace NPNAME1 = "oklahomacityoklahomanOK" /*
-				*/ if NPNAME1=="oklahomacitydailyoklahomanOK"
-	
-	replace NPNAME1 = "mcalesternewscapitalOK" /*
-				*/ if NPNAME1=="mcalesternewscapitalanddemocratOK"
-	
-		
 	
 	
 	collapse (mean) cl_pages_corrected , by(NPNAME1)
 	
 
 
-	merge 1:m NPNAME1 using $base/master_data_newspaper_level
+	merge 1:m NPNAME1 using $base/data/master_data_newspaper_level
 	
 
 	
@@ -1283,6 +1269,18 @@ est clear
 	drop if _merge==1
 	   drop _merge
 	
+	
+	tempfile master
+	save `master', replace
+		
+		keep if year==2000
+		
+		keep NPNAME1 num_pages
+		
+		rename num_pages num_pages_2000
+		
+	merge 1:m NPNAME1 using `master'
+	drop _merge
 	
 	
 	gen clpages =  (cl_pages_corrected/ num_pages_2000)
@@ -1610,12 +1608,8 @@ est clear
 
 **** Broad definition of CL and newspaper markets
 
-rename post_CL_Scraped post_CL_broad_
 
-
-replace post_CL_broad_ = 1 if post_CL_broad_ > 0 & post_CL_broad_!=.
-
-label var post_CL_broad_ "Post-CL (broad)"
+label var post_CL_broad "Post-CL (broad)"
 
 gen post_CL_broad_classif  = post_CL_broad * classif_2000 
 
@@ -1624,7 +1618,7 @@ label var post_CL_broad_classif "Post-CL(broad) $\times$ Classified Mgr."
 
 
 eststo: reghdfe  jobscount /*
-		*/ post_CL_broad_  /*
+		*/ post_CL_broad  /*
 		*/ log_pop num_ISPs  /*
 		*/ , absorb(year NPNAME1_ i.year#c.($basevars)) /*
 		*/ cluster(CL_area)
@@ -1635,7 +1629,7 @@ eststo: reghdfe  jobscount /*
 				
 
 eststo: reghdfe  jobscount /*
-		*/ post_CL_broad_  post_CL_broad_classif  /*
+		*/ post_CL_broad  post_CL_broad_classif  /*
 		*/ log_pop num_ISPs  /*
 		*/ , absorb(year NPNAME1_ i.year#c.($basevars)) /*
 		*/ cluster(CL_area)
@@ -1646,7 +1640,7 @@ eststo: reghdfe  jobscount /*
 				
 				
 eststo: reghdfe  circ  /*
-		*/ post_CL_broad_  /*
+		*/ post_CL_broad  /*
 		*/ log_pop num_ISPs  /*
 		*/ , absorb(year NPNAME1_ i.year#c.($basevars)) /*
 		*/ cluster(CL_area)
@@ -1658,7 +1652,7 @@ eststo: reghdfe  circ  /*
 		
 
 eststo: reghdfe  circ  /*
-		*/ post_CL_broad_ post_CL_broad_classif /*
+		*/ post_CL_broad post_CL_broad_classif /*
 		*/ log_pop num_ISPs  /*
 		*/ , absorb(year NPNAME1_ i.year#c.($basevars)) /*
 		*/ cluster(CL_area)
@@ -1669,7 +1663,7 @@ eststo: reghdfe  circ  /*
 		
 		
 eststo: reghdfe  topic2  /*
-		*/ post_CL_broad_ /*
+		*/ post_CL_broad /*
 		*/ log_pop num_ISPs  /*
 		*/ , absorb(year NPNAME1_ i.year#c.($basevars)) /*
 		*/ cluster(CL_area)
@@ -1681,7 +1675,7 @@ eststo: reghdfe  topic2  /*
 					
 
 eststo: reghdfe  topic2  /*
-		*/ post_CL_broad_ post_CL_broad_classif /*
+		*/ post_CL_broad post_CL_broad_classif /*
 		*/ log_pop num_ISPs  /*
 		*/ , absorb(year NPNAME1_ i.year#c.($basevars)) /*
 		*/ cluster(CL_area)
@@ -1691,7 +1685,7 @@ eststo: reghdfe  topic2  /*
 				estadd scalar NPNAME1_ r(ndistinct) 						
 					
 eststo: reghdfe  ihs_congress_name_mentions  /*
-		*/ post_CL_broad_ /*
+		*/ post_CL_broad /*
 		*/ log_pop num_ISPs  /*
 		*/ ihs_total_articles /*
 		*/ , absorb(year NPNAME1_ i.year#c.($basevars)) /*
@@ -1703,7 +1697,7 @@ eststo: reghdfe  ihs_congress_name_mentions  /*
 			
 	
 eststo: reghdfe  ihs_congress_name_mentions  /*
-		*/ post_CL_broad_ post_CL_broad_classif /*
+		*/ post_CL_broad post_CL_broad_classif /*
 		*/ log_pop num_ISPs  /*
 		*/ ihs_total_articles /*
 		*/ , absorb(year NPNAME1_ i.year#c.($basevars)) /*
@@ -2138,7 +2132,7 @@ est clear
 *** Number of newspapers and changes in ownership
 
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 
 	
    collapse (count) num_papers = NPNAME1_ , by(fips year)
@@ -2151,7 +2145,7 @@ use "$base\master_data_newspaper_level", clear
   
     replace num_papers = 0 if num_papers==.
  
-  merge 1:1 fips year using "$base\master_data_county_level"
+  merge 1:1 fips year using "$base/data/master_data_county_level"
    keep if _merge == 3
       drop _merge
 
@@ -2164,7 +2158,7 @@ use "$base\master_data_newspaper_level", clear
    
 *** Collapsing classified manager at county level
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 
 	keep if year==2000
 	
@@ -2221,7 +2215,7 @@ eststo: reghdfe  num_papers  /*
 				estadd scalar fips r(ndistinct) 		
 	
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 					
 	sort NPNAME1 year				
 					
@@ -2273,7 +2267,7 @@ est clear
 *** TABLE A12: NUMBER OF PAGES PER ISSUE AND SUBSCRIPTION PRICES
 		
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 	
 	
 	drop if largepaper > 0
@@ -2345,6 +2339,10 @@ est clear
 
 		
 		
+		
+		
+		/*
+		/*
 
 		
 *** TABLE A13: SELF-REPORTED CONSUMPTION OF OTHER MEDIA
@@ -2354,7 +2352,7 @@ est clear
 ***** GfK-MRI survey
 
 
-use "$base/master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 
 	keep NPNAME1 fips classif_2000 circ_2000 largepaper_HQ
 
@@ -2368,7 +2366,7 @@ gen newspHQ_2000 = 1
 drop if largepaper_HQ >0
 
 
-merge 1:m fips using "$base/master_data_county_level"
+merge 1:m fips using "$base/data/master_data_county_level"
 
 drop _merge
 
@@ -2475,7 +2473,7 @@ est clear
 
 
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 
 	keep if year == 2000 
 
@@ -2489,7 +2487,7 @@ collapse (mean) classif_2000 [pw=circ_2000], by(fips)
 	gen newspHQ_2000=1
 
 	
-merge 1:m fips using "$base\master_data_county_level"
+merge 1:m fips using "$base/data/master_data_county_level"
 
 keep if _merge ==3
    drop _merge
@@ -2593,7 +2591,8 @@ est clear
 	
 	
 
-
+*/
+*/
 
 
 	
@@ -2617,7 +2616,7 @@ use $base/data/Comscore/visitcounts	, clear
        save `comscore', replace
 
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 		
 	keep if year==2000
 	
@@ -2629,7 +2628,7 @@ use "$base\master_data_newspaper_level", clear
 	gen newspHQ_2000 = 1
 
 
-	merge 1:m fips using "$base\master_data_county_level"
+	merge 1:m fips using "$base/data/master_data_county_level"
 
 	drop _merge
 
@@ -2707,7 +2706,7 @@ eststo: reghdfe `var'  post_CL_  post_CL_classif    /*
 estfe *, labels(year "Year FE"  fips "County FE")
 	return list
 				
-esttab  using $base_results/Appendix_Results/Table_A14.tex,  r2 label replace se star(* 0.1 ** 0.05 *** 0.01) booktabs  nonotes b(3) se(3) ///		
+esttab  using $base_results/Appendix_Tables/Table_A14.tex,  r2 label replace se star(* 0.1 ** 0.05 *** 0.01) booktabs  nonotes b(3) se(3) ///		
 		drop( _cons ) ///
 		order(post_CL_) ///
 		indicate("Baseline controls $\times$ Year FEs = 0.year#c.*"  "Log population, \#ISPs  = log_pop num_ISPs" "County FEs, Year FEs = 0.fips 0.year" "Total Comscore visits (ihs) = all_count",  labels("Yes"  "No")) ///
@@ -2750,7 +2749,7 @@ est clear
 			   
 				duplicates drop NPNAME1 year, force
 			   
-			merge 1:1 NPNAME1 year using $base/master_data_newspaper_level
+			merge 1:1 NPNAME1 year using $base/data/master_data_newspaper_level
 
 			drop if _merge == 1
 			   drop _merge
@@ -2833,7 +2832,7 @@ est clear
 
 		
 	
-use $base/master_data_newspaper_level, clear
+use $base/data/master_data_newspaper_level, clear
 
 
 drop if largepaper > 0
@@ -2887,7 +2886,7 @@ est clear
 
 
 	
-use $base/master_data_newspaper_level, clear
+use $base/data/master_data_newspaper_level, clear
 
 
 drop if largepaper > 0
@@ -2932,7 +2931,7 @@ est clear
 		
 		
 		
-use $base/master_data_newspaper_level, clear
+use $base/data/master_data_newspaper_level, clear
 
 
 drop if largepaper > 0
@@ -2974,7 +2973,7 @@ est clear
 *** TABLE A19: MENTIONS OF HAMILTON (2016) ACCOUNTABILITY KEYWORDS		
 
 
-use $base/master_data_newspaper_level, clear
+use $base/data/master_data_newspaper_level, clear
 
 
 drop if largepaper > 0
@@ -3018,7 +3017,7 @@ est clear
 **** Merging in electoral turnout 
 
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 
 	
 	keep if year==2000
@@ -3033,7 +3032,7 @@ collapse (mean) classif_2000 [pw=circ], by(fips)
 gen newspHQ_2000 = 1
 
 
-merge 1:m fips using "$base\master_data_county_level"
+merge 1:m fips using "$base/data/master_data_county_level"
 drop _merge
 	
 
@@ -3144,7 +3143,7 @@ est clear
 ** Merge in electoral results by candidate extremity
 
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 
 	keep if year==2000
 	
@@ -3159,7 +3158,7 @@ collapse (mean) classif_2000 = classif [pw=circ_2000], by(fips)
 gen newspHQ_2000 = 1
 
 
-merge 1:m fips using "$base\master_data_county_level"
+merge 1:m fips using "$base/data/master_data_county_level"
 
 drop _merge
 

@@ -1,0 +1,21 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{1}{c}{\shortstack{Number \\ of jobs}}&\multicolumn{1}{c}{\shortstack{Circulation \\ per capita}}&\multicolumn{1}{c}{\shortstack{Politics coverage \\ topic weight }}&\multicolumn{1}{c}{\shortstack{Congress coverage \\ names count (ihs)}}\\\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\midrule
+Post-CL $\times$ Classified Mgr.&      -4.310\sym{**} &      -0.007\sym{*}  &      -0.054\sym{***}&      -0.019         \\
+                    &     (1.690)         &     (0.004)         &     (0.019)         &     (0.152)         \\
+\addlinespace
+County $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &       6,105         &       6,193         &       1,203         &       1,413         \\
+Number of newspapers&         413         &         413         &         162         &         182         \\
+R$^2$               &        0.94         &        0.99         &        0.82         &        0.97         \\
+Mean dependent variable&       24.57         &        0.10         &        0.31         &        6.04         \\
+\bottomrule
+\end{tabular}
+}

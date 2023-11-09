@@ -184,14 +184,14 @@ duplicates drop
 		
 
 		
-		esttab  using $base_results/Tables/Table_A1.tex, r2 label replace se star(* 0.1 ** 0.05 *** 0.01) booktabs  nonotes b(3) se(3) ///		
+		esttab  using $base_results/Appendix_Tables/Table_A1.tex, r2 label replace se star(* 0.1 ** 0.05 *** 0.01) booktabs  nonotes b(3) se(3) ///		
 				drop( _cons /*c1*/) ///
 				nomtitle mgroups("\textit{Dependent variable:} Year of CL entry" , pattern(1 0 0 0 0 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) /// ///
 				order(jobscount_2000 circ_2000 classif_2000 log_pop_2000 num_ISPs_2000) ///
 				stats(N r2, label( "Observations" "R$^2$") fmt( 0 %9.2f ))
 
 			   
-		esttab  using $base_results/Appendix_Tables/Table_1a.tex, r2 label replace se star(* 0.1 ** 0.05 *** 0.01) booktabs  nonotes b(3) se(3) ///		
+		esttab  using $base_results/Tables/Table_1a.tex, r2 label replace se star(* 0.1 ** 0.05 *** 0.01) booktabs  nonotes b(3) se(3) ///		
 				drop( _cons /*c1*/) ///
 				nomtitle mgroups("\textit{Dependent variable:} Year of CL entry" , pattern(1 0 0 0 0 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) /// ///
 				order(jobscount_2000 circ_2000 classif_2000 log_pop_2000 num_ISPs_2000) ///
@@ -296,12 +296,10 @@ eststo: reg years_untilCL  change_jobscount /*
 use $base/data/Classified_Prices/ClassRates_1994_2006, clear
 		
 		
-		drop unit
+		drop unit unit_final
 		
 		rename unit_original unit
 		
-		drop unit_final
-	
 	
 	merge m:1 NPNAME1 year using $base/data/master_data_newspaper_level
 	
@@ -682,7 +680,7 @@ esttab  using $base_results/Tables/Table_5b.tex, r2 label replace se star(* 0.1 
 est clear
 
 
-
+/*
 *** Equality of coefs
 
 rename ihs_cong_general_mentions x
@@ -706,12 +704,12 @@ suregr, cluster(CL_area) minus(1) noheader
 lincom _b[x:post_CL_classif] - _b[y:post_CL_classif]
 
 
+*/
 
 
 
 
-
-
+/*
 
 **** TABLE 6: Self-reported newspaper readership 
 	
@@ -1022,7 +1020,7 @@ est clear
 		drop dummy
 		
 		
-		
+*/		
 	
 
 

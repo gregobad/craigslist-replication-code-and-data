@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                    &\multicolumn{1}{c}{\shortstack{man,\\ kill, injuri,\\ injur, accid}}&\multicolumn{1}{c}{\shortstack{music,\\ art, food,\\ festival, featur}}&\multicolumn{1}{c}{\shortstack{car,\\ vehicl, driver,\\ road, truck}}&\multicolumn{1}{c}{\shortstack{di,\\ born, funer,\\ son, daughter}}&\multicolumn{1}{c}{\shortstack{game,\\ team, coach,\\ win, season}}&\multicolumn{1}{c}{\shortstack{polic,\\ charg, court,\\ arrest, judg}}\\
+\midrule
+Post-CL             &      -0.001         &      -0.006         &      -0.003         &      -0.002         &       0.008         &      -0.000         \\
+                    &     (0.004)         &     (0.006)         &     (0.004)         &     (0.009)         &     (0.007)         &     (0.003)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&       0.002         &      -0.006         &      -0.005         &       0.022\sym{*}  &       0.011         &      -0.000         \\
+                    &     (0.006)         &     (0.007)         &     (0.006)         &     (0.012)         &     (0.008)         &     (0.004)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &       7,067         &       7,067         &       7,067         &       7,067         &       7,067         &       7,067         \\
+Number of newspapers&         855         &         855         &         855         &         855         &         855         &         855         \\
+R$^2$               &        0.43         &        0.41         &        0.39         &        0.56         &        0.44         &        0.43         \\
+Mean dependent variable&        0.11         &        0.17         &        0.14         &        0.15         &        0.21         &        0.11         \\
+\bottomrule
+\end{tabular}
+}

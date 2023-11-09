@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{\shortstack{presid,\\ feder, govern,\\ compani, tax}}&\multicolumn{1}{c}{\shortstack{council,\\ mayor, board,\\ plan, student}}&\multicolumn{1}{c}{\shortstack{repres,\\ senat, congress,\\ republican, elect}}&\multicolumn{1}{c}{\shortstack{intern,\\ war, foreign,\\ iraq, militari}}\\
+\midrule
+Post-CL             &       0.000         &      -0.001         &      -0.002         &       0.004         \\
+                    &     (0.005)         &     (0.007)         &     (0.003)         &     (0.003)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&      -0.020\sym{***}&      -0.014\sym{*}  &      -0.009\sym{**} &      -0.011\sym{**} \\
+                    &     (0.006)         &     (0.008)         &     (0.004)         &     (0.005)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &       7,067         &       7,067         &       7,067         &       7,067         \\
+Number of newspapers&         855         &         855         &         855         &         855         \\
+R$^2$               &        0.52         &        0.47         &        0.40         &        0.54         \\
+Mean dependent variable&        0.21         &        0.31         &        0.10         &        0.10         \\
+\bottomrule
+\end{tabular}
+}

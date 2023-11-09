@@ -1,0 +1,28 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{2}{c}{\shortstack{Turnout \\ House/Senate}}&\multicolumn{2}{c}{\shortstack{Split-ticket \\ vote}}\\\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\midrule
+Post-CL             &      -0.002         &       0.000         &      -0.010\sym{**} &      -0.002         \\
+                    &     (0.002)         &     (0.002)         &     (0.005)         &     (0.005)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&                     &      -0.004         &                     &      -0.013\sym{**} \\
+                    &                     &     (0.003)         &                     &     (0.006)         \\
+\addlinespace
+State $\times$ Linear time trend &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+County FEs, Year-Office FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &      15,938         &      15,938         &       7,900         &       7,900         \\
+Number of counties  &       1,201         &       1,201         &       1,201         &       1,201         \\
+R$^2$               &        0.92         &        0.92         &        0.41         &        0.41         \\
+Mean dependent variable&        0.45         &        0.45         &        0.11         &        0.11         \\
+\bottomrule
+\end{tabular}
+}

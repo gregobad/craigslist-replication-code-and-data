@@ -1,0 +1,31 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{2}{c}{\shortstack{Num. newspapers \\ HQ-ed in county}}&\multicolumn{2}{c}{\shortstack{Change in ownership}}\\\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\midrule
+Post-CL             &       0.018         &       0.012         &       0.001         &      -0.000         \\
+                    &     (0.012)         &     (0.014)         &     (0.007)         &     (0.008)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&                     &       0.011         &                     &       0.004         \\
+                    &                     &     (0.018)         &                     &     (0.009)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+County FEs          &         Yes         &         Yes         &          No         &          No         \\
+\addlinespace
+Newspaper FEs       &          No         &          No         &         Yes         &         Yes         \\
+\addlinespace
+Year FEs            &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &      19,216         &      19,216         &      21,428         &      20,857         \\
+Number of counties  &       1,201         &       1,201         &                     &                     \\
+Number of newspapers&                     &                     &       1,541         &       1,442         \\
+R$^2$               &        0.95         &        0.95         &        0.52         &        0.52         \\
+Mean dependent variable&        1.19         &        1.19         &        0.13         &        0.13         \\
+\bottomrule
+\end{tabular}
+}

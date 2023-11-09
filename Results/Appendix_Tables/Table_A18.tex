@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{2}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
+                    &\multicolumn{1}{c}{\shortstack{Congress keywords \\ articles count (ihs)}}&\multicolumn{1}{c}{\shortstack{Congress. primary keywords \\ articles count (ihs)}}\\
+\midrule
+Post-CL             &       0.015         &       0.061         \\
+                    &     (0.038)         &     (0.053)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&      -0.128\sym{***}&      -0.215\sym{***}\\
+                    &     (0.045)         &     (0.064)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         \\
+\midrule
+Observations        &       7,375         &       7,375         \\
+Number of newspapers&         878         &         878         \\
+R$^2$               &        0.95         &        0.84         \\
+Mean dependent variable&        6.39         &        3.98         \\
+\bottomrule
+\end{tabular}
+}

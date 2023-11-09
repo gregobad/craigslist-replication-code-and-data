@@ -1,96 +1,30 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{10}{c}}
+\begin{tabular}{l*{4}{c}}
 \toprule
-                    &\multicolumn{2}{c}{\shortstack{Share classified pages}}&\multicolumn{8}{c}{\shortstack{Log classified rates}}                                                                                                                          \\\cmidrule(lr){2-3}\cmidrule(lr){4-11}
-                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         &\multicolumn{1}{c}{(9)}         &\multicolumn{1}{c}{(10)}         \\
+                    &\multicolumn{2}{c}{\shortstack{Share classified pages}}&\multicolumn{2}{c}{\shortstack{Log classified rates}}\\\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
 \midrule
-Post-CL             &                     &                     &                     &                     &                     &                     &      -0.027\sym{**} &      -0.008         &       0.009         &       0.014         \\
-                    &                     &                     &                     &                     &                     &                     &     (0.013)         &     (0.014)         &     (0.011)         &     (0.015)         \\
+Post-CL             &      -0.027\sym{**} &      -0.008         &       0.009         &       0.014         \\
+                    &     (0.013)         &     (0.014)         &     (0.011)         &     (0.015)         \\
 \addlinespace
-change\_jobscount    &      -0.003         &      -0.000         &                     &                     &                     &                     &                     &                     &                     &                     \\
-                    &     (0.005)         &     (0.005)         &                     &                     &                     &                     &                     &                     &                     &                     \\
+Post-CL $\times$ Classified Mgr.&                     &      -0.042\sym{**} &                     &      -0.010         \\
+                    &                     &     (0.021)         &                     &     (0.019)         \\
 \addlinespace
-change\_log\_pop      &      -4.176\sym{***}&      -2.759         &      -4.163\sym{**} &      -2.725         &      -4.184\sym{**} &      -2.741         &                     &                     &                     &                     \\
-                    &     (1.180)         &     (2.500)         &     (1.852)         &     (2.519)         &     (1.847)         &     (2.514)         &                     &                     &                     &                     \\
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
 \addlinespace
-change\_num\_ISPs     &      -0.953\sym{***}&      -0.587\sym{***}&      -0.953\sym{***}&      -0.587\sym{***}&      -0.953\sym{***}&      -0.587\sym{***}&                     &                     &                     &                     \\
-                    &     (0.089)         &     (0.119)         &     (0.210)         &     (0.120)         &     (0.209)         &     (0.120)         &                     &                     &                     &                     \\
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         \\
 \addlinespace
-c1                  &       0.000         &       0.000         &       0.000         &       0.000         &       0.000         &       0.000         &                     &                     &                     &                     \\
-                    &         (.)         &         (.)         &         (.)         &         (.)         &         (.)         &         (.)         &                     &                     &                     &                     \\
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
 \addlinespace
-c1                  &       0.000         &                     &                     &                     &                     &                     &                     &                     &                     &                     \\
-                    &         (.)         &                     &                     &                     &                     &                     &                     &                     &                     &                     \\
+Newspaper $\times$ Day-of-Week FEs &         Yes         &         Yes         &          No         &          No         \\
 \addlinespace
-share\_white\_2000    &                     &       0.090\sym{**} &                     &       0.090\sym{**} &                     &       0.090\sym{**} &                     &                     &                     &                     \\
-                    &                     &     (0.043)         &                     &     (0.043)         &                     &     (0.043)         &                     &                     &                     &                     \\
-\addlinespace
-share\_black\_2000    &                     &       0.077\sym{*}  &                     &       0.077\sym{*}  &                     &       0.077\sym{*}  &                     &                     &                     &                     \\
-                    &                     &     (0.043)         &                     &     (0.043)         &                     &     (0.043)         &                     &                     &                     &                     \\
-\addlinespace
-share\_hisp\_2000     &                     &      -0.009         &                     &      -0.009         &                     &      -0.009         &                     &                     &                     &                     \\
-                    &                     &     (0.013)         &                     &     (0.013)         &                     &     (0.013)         &                     &                     &                     &                     \\
-\addlinespace
-Age                 &                     &      -0.070\sym{**} &                     &      -0.070\sym{**} &                     &      -0.070\sym{**} &                     &                     &                     &                     \\
-                    &                     &     (0.034)         &                     &     (0.034)         &                     &     (0.034)         &                     &                     &                     &                     \\
-\addlinespace
-Log income per capita&                     &      -1.163         &                     &      -1.162         &                     &      -1.168         &                     &                     &                     &                     \\
-                    &                     &     (1.332)         &                     &     (1.316)         &                     &     (1.319)         &                     &                     &                     &                     \\
-\addlinespace
-Unemployment rate   &                     &      -0.023         &                     &      -0.021         &                     &      -0.023         &                     &                     &                     &                     \\
-                    &                     &     (0.105)         &                     &     (0.105)         &                     &     (0.105)         &                     &                     &                     &                     \\
-\addlinespace
-Pct. college degree &                     &      -0.031         &                     &      -0.031         &                     &      -0.031         &                     &                     &                     &                     \\
-                    &                     &     (0.023)         &                     &     (0.023)         &                     &     (0.023)         &                     &                     &                     &                     \\
-\addlinespace
-Pct. rental         &                     &      -0.030         &                     &      -0.030         &                     &      -0.030         &                     &                     &                     &                     \\
-                    &                     &     (0.022)         &                     &     (0.022)         &                     &     (0.023)         &                     &                     &                     &                     \\
-\addlinespace
-Share urban         &                     &       0.000         &                     &       0.000         &                     &       0.000         &                     &                     &                     &                     \\
-                    &                     &     (0.007)         &                     &     (0.007)         &                     &     (0.007)         &                     &                     &                     &                     \\
-\addlinespace
-pres\_turnout\_2000   &                     &       0.405         &                     &       0.450         &                     &       0.413         &                     &                     &                     &                     \\
-                    &                     &     (2.890)         &                     &     (2.895)         &                     &     (2.895)         &                     &                     &                     &                     \\
-\addlinespace
-c1                  &                     &       0.000         &                     &                     &                     &                     &                     &                     &                     &                     \\
-                    &                     &         (.)         &                     &                     &                     &                     &                     &                     &                     &                     \\
-\addlinespace
-change\_circ         &                     &                     &       0.395         &       0.488         &                     &                     &                     &                     &                     &                     \\
-                    &                     &                     &     (0.844)         &     (0.727)         &                     &                     &                     &                     &                     &                     \\
-\addlinespace
-c1                  &                     &                     &       0.000         &                     &                     &                     &                     &                     &                     &                     \\
-                    &                     &                     &         (.)         &                     &                     &                     &                     &                     &                     &                     \\
-\addlinespace
-c1                  &                     &                     &                     &       0.000         &                     &                     &                     &                     &                     &                     \\
-                    &                     &                     &                     &         (.)         &                     &                     &                     &                     &                     &                     \\
-\addlinespace
-change\_classif      &                     &                     &                     &                     &      -0.017         &      -0.032         &                     &                     &                     &                     \\
-                    &                     &                     &                     &                     &     (0.114)         &     (0.122)         &                     &                     &                     &                     \\
-\addlinespace
-c1                  &                     &                     &                     &                     &       0.000         &                     &                     &                     &                     &                     \\
-                    &                     &                     &                     &                     &         (.)         &                     &                     &                     &                     &                     \\
-\addlinespace
-c1                  &                     &                     &                     &                     &                     &       0.000         &                     &                     &                     &                     \\
-                    &                     &                     &                     &                     &                     &         (.)         &                     &                     &                     &                     \\
-\addlinespace
-Post-CL $\times$ Classified Mgr.&                     &                     &                     &                     &                     &                     &                     &      -0.042\sym{**} &                     &      -0.010         \\
-                    &                     &                     &                     &                     &                     &                     &                     &     (0.021)         &                     &     (0.019)         \\
-\addlinespace
-Baseline controls $\times$ Year FEs &          No         &          No         &          No         &          No         &          No         &          No         &         Yes         &         Yes         &         Yes         &         Yes         \\
-\addlinespace
-Log population, num. ISPs &          No         &          No         &          No         &          No         &          No         &          No         &         Yes         &         Yes         &         Yes         &         Yes         \\
-\addlinespace
-Newspaper FEs, Year FEs &          No         &          No         &          No         &          No         &          No         &          No         &         Yes         &         Yes         &         Yes         &         Yes         \\
-\addlinespace
-Newspaper $\times$ Day-of-Week FEs &          No         &          No         &          No         &          No         &          No         &          No         &         Yes         &         Yes         &          No         &          No         \\
-\addlinespace
-Newspaper $\times$ Unit FEs &          No         &          No         &          No         &          No         &          No         &          No         &          No         &          No         &         Yes         &         Yes         \\
+Newspaper $\times$ Unit FEs &          No         &          No         &         Yes         &         Yes         \\
 \midrule
-Observations        &         615         &         615         &         615         &         615         &         615         &         615         &       6,368         &       6,352         &      14,980         &      14,869         \\
-Number of newspapers&                     &                     &                     &                     &                     &                     &         255         &         254         &       1,407         &       1,395         \\
-R$^2$               &        0.35         &        0.42         &        0.35         &        0.42         &        0.35         &        0.42         &        0.76         &        0.76         &        0.98         &        0.98         \\
-Mean dependent variable&                     &                     &                     &                     &                     &                     &        0.28         &        0.28         &        2.47         &        2.47         \\
+Observations        &       6,368         &       6,352         &      14,980         &      14,869         \\
+Number of newspapers&         255         &         254         &       1,407         &       1,395         \\
+R$^2$               &        0.76         &        0.76         &        0.98         &        0.98         \\
+Mean dependent variable&        0.28         &        0.28         &        2.47         &        2.47         \\
 \bottomrule
 \end{tabular}
 }

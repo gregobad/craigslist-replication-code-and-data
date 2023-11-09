@@ -1,0 +1,29 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\toprule
+                    &\multicolumn{2}{c}{\shortstack{Extremist \\ in primary}}&\multicolumn{2}{c}{\shortstack{Extremist \\ in general}}&\multicolumn{2}{c}{\shortstack{Extremist wins \\ general}}\\\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         \\
+\midrule
+Post-CL             &       0.024         &      -0.032         &       0.042\sym{*}  &       0.003         &       0.003         &      -0.026         \\
+                    &     (0.023)         &     (0.027)         &     (0.024)         &     (0.029)         &     (0.019)         &     (0.018)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&                     &       0.095\sym{***}&                     &       0.066\sym{**} &                     &       0.049\sym{**} \\
+                    &                     &     (0.030)         &                     &     (0.030)         &                     &     (0.023)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+County FEs, Year FEs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+District FEs        &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &      12,700         &      12,700         &      12,998         &      12,998         &      12,868         &      12,868         \\
+Number of counties  &       1,201         &       1,201         &       1,201         &       1,201         &       1,191         &       1,191         \\
+Number of districts &         439         &         439         &         439         &         439         &         437         &         437         \\
+R$^2$               &        0.56         &        0.56         &        0.57         &        0.57         &        0.79         &        0.79         \\
+Mean dependent variable&        0.79         &        0.79         &        0.75         &        0.75         &        0.37         &        0.37         \\
+\bottomrule
+\end{tabular}
+}

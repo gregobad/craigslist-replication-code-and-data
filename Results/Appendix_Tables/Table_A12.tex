@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{2}{c}{\shortstack{Total pages}}&\multicolumn{2}{c}{\shortstack{Subscription price}}\\\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\midrule
+Post-CL             &       0.247\sym{*}  &       0.147         &      -0.020\sym{***}&      -0.011         \\
+                    &     (0.139)         &     (0.144)         &     (0.007)         &     (0.009)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&                     &       0.193         &                     &      -0.020\sym{*}  \\
+                    &                     &     (0.311)         &                     &     (0.011)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &      21,402         &      21,211         &      19,393         &      19,197         \\
+Number of newspapers&       1,413         &       1,400         &       1,365         &       1,351         \\
+R$^2$               &        0.97         &        0.97         &        0.94         &        0.94         \\
+Mean dependent variable&       28.51         &       28.53         &        4.71         &        4.71         \\
+\bottomrule
+\end{tabular}
+}

@@ -88,22 +88,6 @@ foreach var in craigslistorg_count /*
 	keep if year<=2000
 	
 	
-	replace NPNAME1 = "tinleyparkdailysouthtownIL" /*
-				*/ if NPNAME1=="tinleyparksouthtownstarIL"
-	
-	replace NPNAME1 = "sanbernardinosunCA" /*
-				*/ if NPNAME1=="sanbernardinocountysunCA"
-	
-	replace NPNAME1 = "pottsvillerepublicanandeveningheraldPA" /*
-				*/ if NPNAME1=="pottsvillerepublicanPA"
-	
-	replace NPNAME1 = "oklahomacityoklahomanOK" /*
-				*/ if NPNAME1=="oklahomacitydailyoklahomanOK"
-	
-	replace NPNAME1 = "mcalesternewscapitalOK" /*
-				*/ if NPNAME1=="mcalesternewscapitalanddemocratOK"
-	
-	
 	gen n = 1
 	
 	collapse (mean) cl_pages_corrected total_pages (sum) issues = n  , by(NPNAME1 wkday)
@@ -116,11 +100,12 @@ foreach var in craigslistorg_count /*
 	drop if largepaper > 0
 	
 
+				
+	keep if year == 2000
 	
-	gen clpages = (cl_pages_corrected/ num_pages_2000)
+	gen clpages = (cl_pages_corrected/ num_pages)
 
-			
-			keep if year == 2000
+
 			
 			
 			est clear
@@ -154,7 +139,7 @@ foreach var in craigslistorg_count /*
 
 	keep if year <=2000
 	
-	cap drop unit
+	cap drop unit unit_final
 	
 	rename unit_original unit
 	
@@ -219,10 +204,9 @@ use $base/data/Comscore/visitcounts	, clear
 
 merge 1:m fips year using "$base\data/master_data_county_level"
 
-*** Note: Here we are using all counties, not only ones newspaper HQ
-
 drop _merge
 
+*** Note: Here we are using all counties, not only ones newspaper HQ
 
 
 	

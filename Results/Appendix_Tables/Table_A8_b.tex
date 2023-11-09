@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{8}{c}}
+\toprule
+                    &\multicolumn{2}{c}{\shortstack{Number \\ of jobs}}&\multicolumn{2}{c}{\shortstack{Circulation \\ per capita}}&\multicolumn{2}{c}{\shortstack{Politics coverage \\ topic weight }}&\multicolumn{2}{c}{\shortstack{Congress coverage \\ names count (ihs)}}\\\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         \\
+\midrule
+Post-CL             &      -0.088         &       1.222\sym{*}  &       0.000         &       0.004\sym{**} &      -0.012\sym{**} &       0.001         &      -0.067\sym{*}  &      -0.018         \\
+                    &     (0.612)         &     (0.703)         &     (0.001)         &     (0.002)         &     (0.006)         &     (0.006)         &     (0.036)         &     (0.047)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&                     &      -2.737\sym{***}&                     &      -0.008\sym{***}&                     &      -0.025\sym{***}&                     &      -0.087         \\
+                    &                     &     (0.587)         &                     &     (0.003)         &                     &     (0.008)         &                     &     (0.055)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &      12,280         &      12,173         &      12,387         &      12,253         &       4,405         &       4,374         &       4,615         &       4,585         \\
+Number of newspapers&         792         &         785         &         795         &         786         &         493         &         490         &         512         &         509         \\
+R$^2$               &        0.90         &        0.90         &        0.98         &        0.98         &        0.54         &        0.54         &        0.93         &        0.93         \\
+Mean dependent variable&       26.62         &       26.68         &        0.20         &        0.20         &        0.30         &        0.30         &        6.00         &        6.00         \\
+\bottomrule
+\end{tabular}
+}

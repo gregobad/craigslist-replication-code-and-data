@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                    &\multicolumn{1}{c}{\shortstack{Congress. leaders \\ articles count (ihs)}}&\multicolumn{1}{c}{\shortstack{President \\ articles count (ihs)}}&\multicolumn{1}{c}{\shortstack{State and local \\ articles count (ihs)}}\\
+\midrule
+Post-CL             &       0.050         &      -0.008         &       0.005         \\
+                    &     (0.079)         &     (0.057)         &     (0.029)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&      -0.250\sym{***}&      -0.150\sym{**} &      -0.075\sym{**} \\
+                    &     (0.092)         &     (0.067)         &     (0.037)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &       7,375         &       7,375         &       7,375         \\
+Number of newspapers&         878         &         878         &         878         \\
+R$^2$               &        0.86         &        0.90         &        0.95         \\
+Mean dependent variable&        3.78         &        5.14         &        7.58         \\
+\bottomrule
+\end{tabular}
+}
