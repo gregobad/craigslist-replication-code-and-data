@@ -1,5 +1,5 @@
 
-global base   = "C:\Users\mdjou\Dropbox\Craigslist\REPLICATION\"
+global base   = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
 
 clear all
 set more off
@@ -129,7 +129,7 @@ use "$base\data\E&P\EP_panel_1995_2010", clear
 			rename source NL_originalname
 
 
-			merge m:1 NL_originalname using "$base\data\Newspapers_content\NL_namelist_matched_to_EP", keepusing(NPNAME1)
+			merge m:1 NL_originalname using "$base\data\Newspapers_content\matching_NLPQ_to_EP\NL_namelist_matched_to_EP", keepusing(NPNAME1)
 
 				keep if _merge==3
 				   drop _merge

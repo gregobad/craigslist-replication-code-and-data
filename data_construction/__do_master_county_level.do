@@ -5,7 +5,7 @@ set more off
 clear all 
 
 
-global base   = "C:\Users\mdjou\Dropbox\Craigslist\REPLICATION"
+global base   = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
 
 
 	
@@ -314,7 +314,7 @@ use "$base\data\master_data_county_level"
 	
 	*** merge in turnout
 	
-	import delimited using "$base\data\political\CQ\county_vote_all.csv", clear
+	import delimited using "$base\data\political\electoral\county_vote_all.csv", clear
 	
 	keep if inlist(office, "pres")
 	
