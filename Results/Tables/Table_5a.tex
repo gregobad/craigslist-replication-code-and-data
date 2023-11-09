@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+                    &\multicolumn{1}{c}{Politics}&\multicolumn{1}{c}{Sports}&\multicolumn{1}{c}{Entertainment}&\multicolumn{1}{c}{Obituaries}&\multicolumn{1}{c}{Crime}\\
+\midrule
+Post-CL             &      -0.000         &       0.007         &      -0.007         &      -0.003         &      -0.001         \\
+                    &     (0.006)         &     (0.007)         &     (0.007)         &     (0.009)         &     (0.005)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&      -0.024\sym{***}&       0.012         &      -0.010         &       0.022\sym{*}  &       0.001         \\
+                    &     (0.008)         &     (0.008)         &     (0.008)         &     (0.012)         &     (0.008)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &       7,067         &       7,067         &       7,067         &       7,067         &       7,067         \\
+Number of newspapers&         855         &         855         &         855         &         855         &         855         \\
+R$^2$               &        0.52         &        0.44         &        0.47         &        0.56         &        0.45         \\
+Mean dependent variable&        0.29         &        0.21         &        0.22         &        0.15         &        0.14         \\
+\bottomrule
+\end{tabular}
+}

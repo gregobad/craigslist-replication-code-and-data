@@ -1,0 +1,57 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\toprule
+                    &\multicolumn{6}{c}{\textit{Dependent variable:} Year of CL entry}                                                                  \\\cmidrule(lr){2-7}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         \\
+\midrule
+Newspaper jobs      &      -0.004         &      -0.003         &                     &                     &                     &                     \\
+                    &     (0.003)         &     (0.003)         &                     &                     &                     &                     \\
+\addlinespace
+Newspaper circulation per capita&                     &                     &      -0.224         &       0.205         &                     &                     \\
+                    &                     &                     &     (0.512)         &     (0.687)         &                     &                     \\
+\addlinespace
+Newspaper classified manager&                     &                     &                     &                     &      -0.041         &      -0.027         \\
+                    &                     &                     &                     &                     &     (0.122)         &     (0.121)         \\
+\addlinespace
+Log population      &      -0.443\sym{***}&      -0.466\sym{**} &      -0.534\sym{***}&      -0.510\sym{**} &      -0.508\sym{***}&      -0.523\sym{***}\\
+                    &     (0.150)         &     (0.184)         &     (0.176)         &     (0.247)         &     (0.150)         &     (0.190)         \\
+\addlinespace
+Internet service providers&      -0.647\sym{**} &      -0.389\sym{**} &      -0.659\sym{**} &      -0.403\sym{**} &      -0.670\sym{**} &      -0.401\sym{**} \\
+                    &     (0.289)         &     (0.174)         &     (0.299)         &     (0.173)         &     (0.278)         &     (0.168)         \\
+\addlinespace
+Share White         &                     &       0.080\sym{*}  &                     &       0.079\sym{*}  &                     &       0.080\sym{*}  \\
+                    &                     &     (0.048)         &                     &     (0.046)         &                     &     (0.047)         \\
+\addlinespace
+Share Black         &                     &       0.075         &                     &       0.075\sym{*}  &                     &       0.076\sym{*}  \\
+                    &                     &     (0.046)         &                     &     (0.044)         &                     &     (0.046)         \\
+\addlinespace
+Share Hispanic      &                     &      -0.008         &                     &      -0.009         &                     &      -0.009         \\
+                    &                     &     (0.013)         &                     &     (0.013)         &                     &     (0.014)         \\
+\addlinespace
+Median age          &                     &      -0.063\sym{*}  &                     &      -0.070\sym{*}  &                     &      -0.067\sym{*}  \\
+                    &                     &     (0.038)         &                     &     (0.039)         &                     &     (0.038)         \\
+\addlinespace
+Income per capita   &                     &      -0.971         &                     &      -1.023         &                     &      -0.963         \\
+                    &                     &     (1.374)         &                     &     (1.485)         &                     &     (1.367)         \\
+\addlinespace
+Unemployment rate   &                     &       0.013         &                     &       0.017         &                     &       0.017         \\
+                    &                     &     (0.097)         &                     &     (0.097)         &                     &     (0.097)         \\
+\addlinespace
+College degree      &                     &      -0.038\sym{*}  &                     &      -0.035         &                     &      -0.036\sym{*}  \\
+                    &                     &     (0.021)         &                     &     (0.022)         &                     &     (0.021)         \\
+\addlinespace
+Rental share        &                     &      -0.032\sym{*}  &                     &      -0.040\sym{**} &                     &      -0.037\sym{*}  \\
+                    &                     &     (0.018)         &                     &     (0.020)         &                     &     (0.019)         \\
+\addlinespace
+Share urban         &                     &       0.013\sym{*}  &                     &       0.013         &                     &       0.013\sym{*}  \\
+                    &                     &     (0.007)         &                     &     (0.008)         &                     &     (0.007)         \\
+\addlinespace
+Turnout             &                     &       0.876         &                     &       0.717         &                     &       0.729         \\
+                    &                     &     (2.379)         &                     &     (2.420)         &                     &     (2.410)         \\
+\midrule
+Observations        &         616         &         616         &         616         &         616         &         616         &         616         \\
+R$^2$               &        0.38         &        0.45         &        0.38         &        0.45         &        0.38         &        0.45         \\
+\bottomrule
+\end{tabular}
+}

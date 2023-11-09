@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                    &\multicolumn{1}{c}{\shortstack{Politics}}&\multicolumn{1}{c}{\shortstack{Sports}}&\multicolumn{1}{c}{\shortstack{Entmnt.}}\\
+\midrule
+Post-CL             &       0.036         &       0.037         &      -0.055         \\
+                    &     (0.048)         &     (0.047)         &     (0.054)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&      -0.158\sym{**} &       0.080         &      -0.081         \\
+                    &     (0.063)         &     (0.085)         &     (0.093)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &      19,071         &      19,071         &      19,071         \\
+Number of newspapers&       1,413         &       1,413         &       1,413         \\
+R$^2$               &        0.74         &        0.59         &        0.76         \\
+Mean dependent variable&        0.63         &        1.01         &        1.01         \\
+\bottomrule
+\end{tabular}
+}

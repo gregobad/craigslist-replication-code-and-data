@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{\shortstack{Corporate/ \\ General Mgmt.}}&\multicolumn{1}{c}{\shortstack{Advertising \\ Mgmt.}}&\multicolumn{1}{c}{\shortstack{News Exec./ \\ Editorial Mgmt.}}&\multicolumn{1}{c}{\shortstack{ \\ Other}}\\
+\midrule
+Post-CL             &       0.025         &       0.085\sym{*}  &       0.021         &      -0.026         \\
+                    &     (0.079)         &     (0.049)         &     (0.348)         &     (0.123)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&      -0.681\sym{***}&      -0.463\sym{***}&      -0.884\sym{**} &      -0.518\sym{***}\\
+                    &     (0.133)         &     (0.080)         &     (0.444)         &     (0.191)         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Newspaper FEs, Year FEs &         Yes         &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &      20,327         &      20,327         &      20,327         &      20,207         \\
+Number of newspapers&       1,436         &       1,436         &       1,436         &       1,436         \\
+R$^2$               &        0.80         &        0.80         &        0.89         &        0.82         \\
+Mean dependent variable&        3.47         &        1.96         &       10.52         &        5.46         \\
+\bottomrule
+\end{tabular}
+}

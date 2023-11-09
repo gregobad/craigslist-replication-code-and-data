@@ -1,0 +1,29 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\toprule
+                    &\multicolumn{6}{c}{\textit{Dependent variable:} Year of CL entry}                                                                  \\\cmidrule(lr){2-7}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         \\
+\midrule
+$\Delta$ Newspaper jobs&      -0.003         &      -0.000         &                     &                     &                     &                     \\
+                    &     (0.005)         &     (0.005)         &                     &                     &                     &                     \\
+\addlinespace
+$\Delta$ Newspaper circulation per capita&                     &                     &       0.395         &       0.488         &                     &                     \\
+                    &                     &                     &     (0.844)         &     (0.727)         &                     &                     \\
+\addlinespace
+$\Delta$ Newspaper classified manager&                     &                     &                     &                     &      -0.017         &      -0.032         \\
+                    &                     &                     &                     &                     &     (0.114)         &     (0.122)         \\
+\addlinespace
+$\Delta$ Log population&      -4.176\sym{***}&      -2.759         &      -4.163\sym{**} &      -2.725         &      -4.184\sym{**} &      -2.741         \\
+                    &     (1.180)         &     (2.500)         &     (1.852)         &     (2.519)         &     (1.847)         &     (2.514)         \\
+\addlinespace
+$\Delta$ Internet service providers&      -0.953\sym{***}&      -0.587\sym{***}&      -0.953\sym{***}&      -0.587\sym{***}&      -0.953\sym{***}&      -0.587\sym{***}\\
+                    &     (0.089)         &     (0.119)         &     (0.210)         &     (0.120)         &     (0.209)         &     (0.120)         \\
+\addlinespace
+Other county characteristics &          No         &         Yes         &          No         &         Yes         &          No         &         Yes         \\
+\midrule
+Observations        &         615         &         615         &         615         &         615         &         615         &         615         \\
+R$^2$               &        0.35         &        0.42         &        0.35         &        0.42         &        0.35         &        0.42         \\
+\bottomrule
+\end{tabular}
+}
