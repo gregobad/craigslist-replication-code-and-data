@@ -39,8 +39,8 @@ Figure B.2 | N/A |
 Figure B.3 | N/A | 
 Figure B.4 | `___do_Figures_Appendix.do` | Yes
 Figure B.5 | `___do_Figures_Appendix.do` | Yes
-Figure B.6 | `___do_Figures_Appendix.do` | 
-Figure B.7 | `___do_Figures_Appendix.do` | 
+Figure B.6 | `N/A` | 
+Figure B.7 | `N/A` | 
 Table A.1  | `___do_Tables.do` | 
 Table A.2  | `___do_Tables_Appendix.do`  | 
 Table A.3  | `___do_Tables_Appendix.do`  | 
