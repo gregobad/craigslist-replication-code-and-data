@@ -2484,8 +2484,6 @@ use "$base/data/master_data_newspaper_level", clear
 	
 collapse (mean) classif_2000 [pw=circ_2000], by(fips)
 
-	gen newspHQ_2000=1
-
 	
 merge 1:m fips using "$base/data/master_data_county_level"
 
@@ -2500,16 +2498,6 @@ tempfile master
    
 
 use "$base\data\annenberg\annenberg2000-2004-2008_select", clear
-
-gen n=_n
-
-
-merge 1:1 n using "$base\data\annenberg\annenberg2000-2004-2008_preds"
-
-keep if _merge==3
-   drop _merge
-   
-   
  
 merge m:1 fips year using `master'
 

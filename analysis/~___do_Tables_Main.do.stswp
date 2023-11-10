@@ -898,10 +898,8 @@ tempfile master
 
 use "$base\data\annenberg\annenberg2000-2004-2008_select", clear
 
-gen n=_n
 
-
-merge 1:1 n using "$base\data\annenberg\annenberg2000-2004-2008_preds"
+merge 1:1 ckey using "$base\data\annenberg\annenberg2000-2004-2008_preds"
 
 keep if _merge==3
    drop _merge
