@@ -63,7 +63,7 @@ Table A.19  | `___do_Tables_Appendix.do` |
 Table A.20  | `___do_Tables_Appendix.do` |
 Table B.1  | `___do_Tables_Appendix.do` | 
 Table B.2  | `___do_Tables_Appendix.do` |
-Table B.3  | `Topic Model CorEx.ipynb` | Yes
+Table B.3  | `/data_construction/01_Topic Model.ipynb` | Yes
 
 # Description of Data Files
 
@@ -87,7 +87,26 @@ Directory | Description
 `Newspapers.com` | Data on the number of classified pages per issue at the newspaper-year level, extracted from the Newspapers.com archive
 `Newspapers_content` | Keyword counts and topic models extracted from the NewsBank database of newspaper content
 `political` | Electoral data at county and county x congressional district level, along with information on members of congress used to generate keyword searches
-`population' |
+
+
+
+# List of Data Construction scripts
+
+Script | Requires Proprietary Data?
+`00_classifieds_clean_newspapers_com_data.R` | Yes
+`00_clean_Annenberg.do`	| Yes
+`00_clean_Comscore.do`	| Yes
+`00_clean_ISPs.do`		| 
+`00_congress_outcomes.R` 	|
+`00_gfk_clean_gfkmri.R` | Yes
+`00_keywordcounts_export_congressman_list.R`  | Yes
+`00_keywordcounts_export_nb_search_folders.R` | Yes
+`00_turnout_splitvote_outcomes.R` | 
+`01_gfk_predict_classified_interest.R` | Yes
+`01_keywordcounts_export_keyword_mentions.R` | Yes
+`01_Topic Model.ipynb` | Yes
+`02__do_master_county_level.do` |
+`02__do_master_newspaper_level.do` |
 
 
 # Sources for Proprietary Data Sets
