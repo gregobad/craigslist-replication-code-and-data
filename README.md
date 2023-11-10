@@ -92,7 +92,9 @@ Directory | Description
 
 # List of Data Construction scripts
 
+
 Script | Requires Proprietary Data?
+------ | ------ 
 `00_classifieds_clean_newspapers_com_data.R` | Yes
 `00_clean_Annenberg.do`	| Yes
 `00_clean_Comscore.do`	| Yes
