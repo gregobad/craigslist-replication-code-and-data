@@ -7,8 +7,6 @@ set more off
 
 
 
-
-   			
 		
 **** Correlates of CL entry year   
    

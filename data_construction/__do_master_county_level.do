@@ -8,6 +8,10 @@ clear all
 global base   = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
 
 
+
+tempfile ISPs
+save `ISPs', empty replace
+
 	
 
 ****Start with reading in controls
@@ -228,7 +232,6 @@ use "$base\data\master_data_county_level"
 	
 	
 	
-	
 	*** merge in number of ISPs by county 
 	
 	merge 1:1 fips year using "$base\data\controls\isps", keepusing(num_ISPs_ipo)
@@ -246,6 +249,7 @@ use "$base\data\master_data_county_level"
 	rename num_ISPs_ num_ISPs
 
 	save "$base\data\master_data_county_level", replace
+
 
 	
 	*** merge in time-varying population

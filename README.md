@@ -74,12 +74,13 @@ Directory | Description
 ------ | ------ 
 `annenberg` | Predicted values of interest in news and classified sections given reader demographics, estimated in the National Annenberg Election Survey data (raw data not included)
 `census` | Data from the US census used to crosswalk census tracts to counties, and for intercensal population estimates at county level
-`Classified_Prices` | Data from SRDS on classified rates at the newspaper-year level
+`Classified_Prices` | Digitized data from SRDS on classified rates at the newspaper-year level
 `_counties_to_CDs` | Crosswalks from county to congressional district
 `_counties_to_DMAs` | Crosswalks from county to media market (DMA)
 `craigslist_expansion` | Data on opening dates of local Craigslist sites
 `E&P` | Digitized data from the Editor and Publisher yearbooks
 `GfK-MRI` | Fitted models and predicted values of interest in news and classified sections given reader demographics, estimated in the GfK-MRI data (raw data not included)
+`ISPs' | Data from the FCC on the number of Internet service providers by zip-code
 `Newspapers.com` | Data on the number of classified pages per issue at the newspaper-year level, extracted from the Newspapers.com archive
 `Newspapers_content` | Keyword counts and topic models extracted from the NewsBank database of newspaper content
 `political` | Electoral data at county and county x congressional district level, along with information on members of congress used to generate keyword searches

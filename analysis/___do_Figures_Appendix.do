@@ -1,5 +1,5 @@
-global base         = "C:\Users\mdjou\Dropbox\Craigslist"
-global base_results = "C:\Users\mdjou\Dropbox\Craigslist\REPLICATION"
+global base         = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
+global base_results = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
 
 clear all
 set more off
@@ -13,7 +13,7 @@ set more off
 **** FIGURE A1: SPLIT-TICKET VOTING – EVENT STUDY
 
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 
 	
 	keep if year==2000
@@ -28,14 +28,14 @@ collapse (mean) classif_2000 [pw=circ], by(fips)
 gen newspHQ_2000 = 1
 
 
-merge 1:m fips using "$base\master_data_county_level"
+merge 1:m fips using "$base/data/master_data_county_level"
 drop _merge
 	
 
 keep if newspHQ_2000 ==1	
 	
 
-merge 1:1 fips year using $base\data\political\turnout_data_notmerged, keepusing(house_dev sen_dev)
+merge 1:1 fips year using $base\data\political\turnout_data_notmerged, keepusing(house_dev sen_dev turnout_house turnout_sen)
 
 drop _merge
 
@@ -61,8 +61,8 @@ replace split_vote = sen_dev   if exp==1
 
 
 
-	gen turnout_congress = turnouthouse if exp==0
-replace turnout_congress = turnoutsen   if exp==1
+	gen turnout_congress = turnout_house if exp==0
+replace turnout_congress = turnout_sen   if exp==1
 
 	
 
@@ -114,7 +114,7 @@ restore
 ******************************************************************************
 **** FIGURE A2: ENTRY AND PERFORMANCE OF EXTREMIST CANDIDATES – EVENT STUDIES
 
-use "$base\master_data_newspaper_level", clear
+use "$base/data/master_data_newspaper_level", clear
 
 	keep if year==2000
 	
@@ -129,7 +129,7 @@ collapse (mean) classif_2000 = classif [pw=circ_2000], by(fips)
 gen newspHQ_2000 = 1
 
 
-merge 1:m fips using "$base\master_data_county_level"
+merge 1:m fips using "$base/data/master_data_county_level"
 
 drop _merge
 
@@ -304,7 +304,8 @@ restore
 	 
 
 
-	
+	/*
+	/*
 	
 **** FIGURE B4: NUMBER OF ISPS AND SELF-REPORTED INTERNET ACCESS
 
@@ -318,7 +319,7 @@ use "$base\data\GfK-MRI\gfk_full", clear
 
    rename int_year year
    
-   merge m:1 fips year using "$base\master_data_county_level", keepusing(num_ISPs)
+   merge m:1 fips year using "$base/data/master_data_county_level", keepusing(num_ISPs)
    
    keep if _merge ==3
    
@@ -341,7 +342,7 @@ use "$base\data\GfK-MRI\gfk_full", clear
 use "$base\data\annenberg\annenberg2000-2004-2008_select", clear   
 
    
-   merge m:1 fips year using "$base\master_data_county_level", keepusing(num_ISPs)
+   merge m:1 fips year using "$base/data/master_data_county_level", keepusing(num_ISPs)
    
    keep if _merge ==3
    
@@ -356,6 +357,8 @@ use "$base\data\annenberg\annenberg2000-2004-2008_select", clear
 	 est clear	
 		
 		
+		*/
+		*/
 		
    
 
@@ -363,7 +366,7 @@ use "$base\data\annenberg\annenberg2000-2004-2008_select", clear
 **** FIGURE B5: NEWSPAPER READERSHIP BY SECTION
 
 
-   import delimited using $base/data/GfK-MRI/gfk_newspapersections_2001.csv
+   import delimited using $base/data/GfK-MRI/gfk_newspapersections_2001.csv, clear
 
 
    rename  v4 Business_Finance
