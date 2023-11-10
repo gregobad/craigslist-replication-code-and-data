@@ -72,11 +72,14 @@ The `data` directory contains the main analysis data sets, `master_data_county_l
 
 Directory | Description
 ------ | ------ 
+`_co99_d00_shp` | County shape files
+`_counties_to_CDs` | Crosswalks from county to congressional district
+`_counties_to_DMAs` | Crosswalks from county to media market (DMA)
+`_zipcode` | Zipcode to county crosswalks
 `annenberg` | Predicted values of interest in news and classified sections given reader demographics, estimated in the National Annenberg Election Survey data (raw data not included)
 `census` | Data from the US census used to crosswalk census tracts to counties, and for intercensal population estimates at county level
 `Classified_Prices` | Digitized data from SRDS on classified rates at the newspaper-year level
-`_counties_to_CDs` | Crosswalks from county to congressional district
-`_counties_to_DMAs` | Crosswalks from county to media market (DMA)
+`Comscore' | Aggregated website visits recorded by Comscore (raw data not included)
 `craigslist_expansion` | Data on opening dates of local Craigslist sites
 `E&P` | Digitized data from the Editor and Publisher yearbooks
 `GfK-MRI` | Fitted models and predicted values of interest in news and classified sections given reader demographics, estimated in the GfK-MRI data (raw data not included)
