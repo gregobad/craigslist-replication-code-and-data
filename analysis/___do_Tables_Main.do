@@ -6,6 +6,21 @@ set more off
 
 
 
+*** baseline county characteristics
+
+global basevars    share_white_2000 /*
+				*/ share_black_2000 /*
+				*/ share_hisp_2000 /*
+				*/ age_2000 /*
+				*/ income_2000 /*
+				*/ unemployment_2000 /*
+				*/ pct_college_2000 /*
+				*/ pct_rental_2000 /*
+				*/ share_urban_2000 /*
+				*/ pres_turnout_2000 
+
+
+
 
 		
 **** Correlates of CL entry year   
@@ -64,18 +79,10 @@ collapse (sum)  classif_2000 /*
 */, by(fips state)
 
 
+		
+				
 
-
-local countyvars   share_white_2000 /*
-				*/ share_black_2000 /*
-				*/ share_hisp_2000 /*
-				*/ age_2000 /*
-				*/ income_2000 /*
-				*/ unemployment_2000 /*
-				*/ pct_college_2000 /*
-				*/ pct_rental_2000 /*
-				*/ share_urban_2000 /*
-				*/ pres_turnout_2000  /*
+local countyvars  $basevars  /*
 						*/  circ_2000 /*
 						*/  jobscount_2000 /*
 						*/  classif_2000 
@@ -130,20 +137,7 @@ duplicates drop
 
 		
 		
-		
-		global basevars    share_white_2000 /*
-						*/ share_black_2000 /*
-						*/ share_hisp_2000 /*
-						*/ age_2000 /*
-						*/ income_2000 /*
-						*/ unemployment_2000 /*
-						*/ pct_college_2000 /*
-						*/ pct_rental_2000 /*
-						*/ share_urban_2000 /*
-						*/ pres_turnout_2000 
-				
-			
-		
+
 		
 		
 		**** TABLE 1: Correlates of year of CL entry
@@ -363,24 +357,7 @@ use $base/data/master_data_newspaper_level, clear
    
 drop if largepaper >0
 	
-	
-**** baseline county-characteristics 
-	
-global basevars share_white_2000 /*
-			*/ share_black_2000 /*
-			*/ share_hisp_2000 /*
-			*/ age_2000 /*
-			*/ income_2000 /*
-			*/ unemployment_2000 /*
-			*/ pct_college_2000 /*
-			*/ pct_rental_2000 /*
-			*/ share_urban_2000 /*
-			*/ pres_turnout_2000 
-	
-	
-	
-	
-	
+
 	
 
 *******************************************************************************

@@ -8,17 +8,9 @@ set more off
 
 
 
-use $base/data/master_data_newspaper_level, clear
 
-   
-   
-drop if largepaper >0
-
-		
-		
-		
 	
-**** baseline county-characteristics interacted with time FEs
+**** baseline county characteristics 
 	
 global basevars share_white_2000 /*
 			*/ share_black_2000 /*
@@ -32,14 +24,15 @@ global basevars share_white_2000 /*
 			*/ pres_turnout_2000 
 	
 
-*******************************************
-	
 
 
-tempfile master
-   save `master', replace
 
+
+use $base/data/master_data_newspaper_level, clear
    
+drop if largepaper >0
+
+		
    
 
 *** TABLE A2: ALTERNATIVE CONTROLS
@@ -247,8 +240,13 @@ est clear
 /*
 /*
 
+
+
 **** Additional control for survey measure of Internet access
 
+
+tempfile master
+save `master', replace
    
   
 use "$base\data\annenberg\annenberg2000-2004-2008_select", clear   

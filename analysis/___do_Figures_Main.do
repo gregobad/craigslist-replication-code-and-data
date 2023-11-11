@@ -7,7 +7,20 @@ set more off
 
 
 
-
+**** baseline county characteristics
+	
+global basevars share_white_2000 /*
+			*/ share_black_2000 /*
+			*/ share_hisp_2000 /*
+			*/ age_2000 /*
+			*/ income_2000 /*
+			*/ unemployment_2000 /*
+			*/ pct_college_2000 /*
+			*/ pct_rental_2000 /*
+			*/ share_urban_2000 /*
+			*/ pres_turnout_2000 
+	
+	
 
 
 	   
@@ -276,19 +289,6 @@ use $base/data/master_data_newspaper_level, clear
 drop if largepaper >0
 
 		
-	
-**** baseline county characteristics
-	
-global basevars share_white_2000 /*
-			*/ share_black_2000 /*
-			*/ share_hisp_2000 /*
-			*/ age_2000 /*
-			*/ income_2000 /*
-			*/ unemployment_2000 /*
-			*/ pct_college_2000 /*
-			*/ pct_rental_2000 /*
-			*/ share_urban_2000 /*
-			*/ pres_turnout_2000 
 	
 
 ************************************************************
