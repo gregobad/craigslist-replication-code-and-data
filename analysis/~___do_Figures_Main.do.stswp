@@ -135,7 +135,7 @@ foreach var in craigslistorg_count /*
 			
 		
 			
-			marginsplot,  recast(bar) plotopts(barw(.8)) graphregion(fcolor(white)) title("Classified pages (share of total)") xtitle("Classified Mgr.", size(medlarge)) ytitle("Linear Prediction", size(medlarge)) ciopts(lwidth(thick) lcolor(gray))
+			marginsplot,  recast(bar) plotopts(barw(.8)) graphregion(fcolor(white)) title("Classified pages (share of total)") xtitle("Classified Mgr.", size(medlarge)) ytitle("Linear Prediction", size(medlarge)) iopts(lwidth(thick) lcolor(gray))
 						
 			graph export "$base_results/Figures/Figure_3a.pdf", replace	
 			
