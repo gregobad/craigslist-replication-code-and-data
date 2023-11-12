@@ -8,8 +8,10 @@ global base  "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-da
 
 
 
+
+
 ** 2000
-{
+
 use "$base/2000/naes_2000_nat_cs_19991214_20000403_data.dta", clear
 
 append using "$base/2000/naes_2000_nat_cs_20000404_20000717_data.dta"
@@ -93,10 +95,10 @@ rename	cr34 voted_general_election
 *demogrpahic controls: cw*
 
 save "$base/annenberg2000_select", replace // 58,373 respondents.
-}
+
 
 ** 2004
-{
+
 use "$base/2004/DataNRCS.dta", clear
 
 merge 1:1 ckey using "$base/2004/NAES04_mapping_zip.dta"
@@ -225,7 +227,7 @@ rename  cwa04 cw28
 rename  cwf01 cw26
 
 save "$base/annenberg2004_select", replace // 81,422 respondents.
-}
+
 
 *Note for the whole US: ZIP to counties crosswalk
 *Source: http://mcdc.missouri.edu/applications/geocorr2014.html
@@ -239,7 +241,7 @@ save "$base/annenberg2004_select", replace // 81,422 respondents.
 */
 
 ** 2008
-{
+
 use "$base/2008/naes08_phone_nat_rcs_data_full.dta", clear
 
 merge 1:1 rkey using "$base/2008/NAES08_mapping_zip.dta"
@@ -292,7 +294,7 @@ global vars08 "ra01_c	rbb02_c	rcb03_c	rcb04_c	ma01_c	ma02_c	ma03_c	ma04_c	cba01_
 **univar $vars08
 **des $vars08
 
- keep year rkey district discussed_online wfc06 ra01_c rbb02_c	ma01_c	ma02_c	ma03_c	ma04_c	cba01_c	cba02_c	eb03_c	ed02_c	ec01_c	ec02_c   rcb02_c     wa01_c	wa02_c	wc03_c	wa03_c	wc05_c	wfa03_c	wb01_c	wb04_c	wd01_c	wfb01_c wfc02_c wa04_c	wa05_c	wfa01_c wg01_c intended congress_control congress_approval override_veto
+ keep year rkey district discussed_online wfc06 ra01_c rbb02_c	ma01_c	ma02_c	ma03_c	ma04_c	cba01_c	cba02_c	eb03_c	ed02_c	ec01_c	ec02_c  ed01_c ed02_c  rcb02_c     wa01_c	wa02_c	wc03_c	wa03_c	wc05_c	wfa03_c	wb01_c	wb04_c	wd01_c	wfb01_c wfc02_c wa04_c	wa05_c	wfa01_c wg01_c intended congress_control congress_approval override_veto
 
 order year rkey district discussed_online wfc06 ra01_c rbb02_c	ma01_c	ma02_c	ma03_c	ma04_c	cba01_c	cba02_c	eb03_c	ed02_c	ec01_c	ec02_c    rcb02_c    wa01_c	wa02_c	wc03_c	wa03_c	wc05_c	wfa03_c	wb01_c	wb04_c	wd01_c	wfb01_c	wfc02_c wa04_c	wa05_c	wfa01_c wg01_c intended congress_control congress_approval override_veto
 
@@ -317,7 +319,7 @@ replace pers_eco_better=0 if cba02_c!=. & pers!=1
 replace ec01_c=. if ec01_c==998 | ec01_c==999
 rename ec01_c listened_radio
 
-rename ed02_c read_most
+
 
 rename	wg01_c internet_access
 rename rcb02_c voted_general_election
@@ -342,8 +344,14 @@ rename  wa04_c cw28
 rename  wa05_c cw28b
 rename  wfa01_c cw26
 
+
+*** media Qs only regarding campaign info
+
+
 save "$base/annenberg2008_select", replace // 57,967 respondents.
-}
+
+
+
 
 use "$base/annenberg2000_select", clear
 append using "$base/annenberg2004_select"
@@ -390,21 +398,20 @@ qui tab cw03, gen(resp_race)
 
 
     gen read_newspaper_type = 0 if read_newspaper == 0
-replace read_newspaper_type = 1 if inlist(read_most, 17, 29, 30) & year == 2000
-replace read_newspaper_type = 1 if inlist(read_most, 20, 32, 33) & year == 2004
-**if year==2008
+replace read_newspaper_type = 1 if inlist(read_most, 17, 29, 30) 
+
+
 replace read_newspaper_type = 2 if read_newspaper!=. & read_newspaper_type!=0 & read_newspaper_type!=1
 replace read_newspaper_type = . if read_most == . & read_newspaper!=0
 
 
 
     gen read_newspaper_national = 0 if read_newspaper!=.
-replace read_newspaper_national = read_newspaper if inlist(read_most, 17, 29, 30)
+replace read_newspaper_national = read_newspaper if read_newspaper_type==1
 
 
+    replace read_newspaper = 0 if read_newspaper_type==1
 
-replace read_newspaper = 0 if inlist(read_most, 17, 29, 30) & year == 2000
-replace read_newspaper = 0 if inlist(read_most, 20, 32, 33) & year == 2004
 
 
 save "$base/annenberg2000-2004-2008_select", replace

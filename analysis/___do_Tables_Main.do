@@ -21,6 +21,9 @@ global basevars    share_white_2000 /*
 
 
 
+				
+********************************************************************				
+				
 
 		
 **** Correlates of CL entry year   
@@ -231,7 +234,7 @@ eststo: reg years_untilCL  change_jobscount /*
 				order( change_jobscount  change_circ change_classif change_log_pop change_num_ISPs) ///
 				stats(N r2, label( "Observations" "R$^2$") fmt( 0 %9.2f ))
 
-		
+		est clear
 		
 			
 			
@@ -684,25 +687,29 @@ lincom _b[x:post_CL_classif] - _b[y:post_CL_classif]
 
 
 
-/*
+
+
+
 
 **** TABLE 6: Self-reported newspaper readership 
 	
 
 **** Merging in GfK-MRI survey
 
-use "$base/data/master_data_newspaper_level", clear
+use "$base\data\master_data_newspaper_level", clear
+	
+	keep if year==2000
 
-	keep NPNAME1 fips classif_2000 circ_2000 largepaper
-
-	duplicates drop
+	replace classif_2000 = 0 if classif_2000 ==.	
 	
 collapse (mean) classif_2000 largepaper [pw=circ_2000], by(fips)
 
-drop if largepaper !=0
+	 drop if largepaper!=0
 
 
 merge 1:m fips using "$base/data/master_data_county_level"
+
+drop if _merge ==2
 
 drop _merge
 
@@ -829,20 +836,7 @@ esttab  using $base_results/Tables/Table_6a.tex, r2 label replace se star(* 0.1 
 est clear
 
 
-		gen     dummy = 0 if read_np_HnewsLclas!=.
-		replace dummy = 1 if read_np_LnewsHclas!=.
-		
-		
-		eststo: reghdfe read_np  i.dummy#i.post_CL_ i.dummy#c.post_CL_classif    /*
-		*/ i.dummy#c.log_pop i.dummy#c.num_ISPs i.dummy#(c.$resp_controls) /*
-		*/ , absorb(i.dummy#i.year  i.dummy#i.fips i.dummy#(i.year#c.($basevars))) /*
-		*/ cluster(CL_area)
-		
-		test post_CL_classif#0.dummy = post_CL_classif#1.dummy
 
-		drop dummy
-		
-		
 		
 
 
@@ -852,20 +846,17 @@ est clear
 
 use "$base\data\master_data_newspaper_level", clear
 
-	keep if year == 2000 
-
-	keep NPNAME1 fips classif_2000 circ_2000 
+	keep if year==2000
 	
-	replace classif_2000 = 0 if classif_2000==. 
-
+	replace classif_2000 = 0 if classif_2000 ==.	
 	
 collapse (mean) classif_2000 largepaper [pw=circ_2000], by(fips)
 
-	drop if largepaper!=0
+	 drop if largepaper!=0
 	
 merge 1:m fips using "$base\data\master_data_county_level"
 
-keep if _merge ==3
+drop if _merge ==2
    drop _merge
 
 
@@ -884,19 +875,14 @@ keep if _merge==3
    
  
 merge m:1 fips year using `master'
-
-
-	keep if year!=2008 /*only campaign-specific media consumption Qs in 2008*/ 
 	
 	
 rename read_newspaper_national read_national
 
-egen watched_TV = rowmax(watched_local watched_network watched_cable)
-		
 		
     gen read_newspaper_dummy = 0 if read_newspaper!=.
 replace read_newspaper_dummy = 1 if read_newspaper > 0 & read_newspaper!=.
-		
+
 
 	egen median_clas = median(pred_cl) 
 	egen median_news = median(pred_news) 
@@ -975,25 +961,8 @@ esttab  using $base_results/Tables/Table_6b.tex, r2 label replace se star(* 0.1 
 est clear
 
 
+		
 
-
-		*** Testing equality of coefs
-				
-		gen     dummy = 0 if read_np_HnewsLclas!=.
-		replace dummy = 1 if read_np_LnewsHclas!=.
-		
-		
-				eststo: reghdfe read_newspaper_dummy  i.dummy#i.post_CL_ i.dummy#c.post_CL_classif    /*
-		*/ i.dummy#c.log_pop i.dummy#c.num_ISPs i.dummy#(c.$resp_controls) /*
-		*/ , absorb(i.dummy#i.year  i.dummy#i.fips i.dummy#(i.year#c.($basevars))) /*
-		*/ cluster(CL_area)
-		
-		test post_CL_classif#0.dummy = post_CL_classif#1.dummy
-
-		drop dummy
-		
-		
-*/		
 	
 
 
@@ -1005,25 +974,21 @@ est clear
 
 use "$base\data\master_data_newspaper_level", clear
 
-	
 	keep if year==2000
-	
-	keep NPNAME1 fips classif_2000 circ_2000
-	
+		
 	replace classif_2000= 0 if classif_2000==. 
 	
 	
 collapse (mean) classif_2000 [pw=circ], by(fips)
 	
-gen newspHQ_2000 = 1
-
 
 merge 1:m fips using "$base\data\master_data_county_level"
+
+drop if _merge==2
+
 drop _merge
 	
 
-keep if newspHQ_2000 ==1	
-	
 
 merge 1:1 fips year using $base\data\political\turnout_data_notmerged,  keepusing(house_dev sen_dev turnout_house turnout_sen)
 
@@ -1133,25 +1098,19 @@ use "$base\data\master_data_newspaper_level", clear
 
 	keep if year==2000
 	
-	keep NPNAME1 fips classif_2000 circ_2000
-
 	replace classif_2000 = 0 if classif_2000==.
 
 		
-collapse (mean) classif_2000 = classif [pw=circ_2000], by(fips)
-
-	
-gen newspHQ_2000 = 1
+collapse (mean) classif_2000 [pw=circ_2000], by(fips)
 
 
 merge 1:m fips using "$base\data\master_data_county_level"
 
+drop if _merge ==2
+
 drop _merge
 
 tempfile np
-
-
-keep if newspHQ_2000 == 1
 
 
 

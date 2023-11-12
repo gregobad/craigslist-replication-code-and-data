@@ -25,6 +25,10 @@ global basevars share_white_2000 /*
 	
 
 
+***********************************************	
+	
+	
+	
 
 
 
@@ -237,8 +241,8 @@ est clear
 
 
 
-/*
-/*
+
+
 
 
 
@@ -374,9 +378,8 @@ esttab  using $base_results/Appendix_Tables/Table_A2_c.tex, nomtitle r2 label re
 		stats(N NPNAME1_ r2 m, label( "Observations" "Number of newspapers" "R$^2$" "Mean dependent variable"  ) fmt(%13.0fc %13.0fc %9.2f %9.2f))
 est clear			
 			
-*/
-*/			
 
+			
 
    
    
@@ -2338,9 +2341,7 @@ est clear
 		
 		
 		
-		
-		/*
-		/*
+
 
 		
 *** TABLE A13: SELF-REPORTED CONSUMPTION OF OTHER MEDIA
@@ -2352,16 +2353,13 @@ est clear
 
 use "$base/data/master_data_newspaper_level", clear
 
-	keep NPNAME1 fips classif_2000 circ_2000 largepaper_HQ
+	keep if year ==2000
 
-	duplicates drop
+	replace classif_2000 = 0 if classif_2000 ==.
 	
-collapse (mean) classif_2000 [pw=circ_2000], by(fips largepaper_HQ)
+collapse (mean) classif_2000 largepaper [pw=circ_2000], by(fips)
 
-	
-gen newspHQ_2000 = 1
-
-drop if largepaper_HQ >0
+drop if largepaper !=0
 
 
 merge 1:m fips using "$base/data/master_data_county_level"
@@ -2400,9 +2398,6 @@ gen post_CL_classif    = post_CL_ * classif_2000
 label var post_CL_		  	 "Post-CL"
 label var post_CL_classif 	 "Post-CL $\times$ Classified Mgr."
 
-
-		keep if newspHQ_2000 == 1
-		
 				
 	
 	*** respondent controls
@@ -2474,18 +2469,16 @@ est clear
 use "$base/data/master_data_newspaper_level", clear
 
 	keep if year == 2000 
-
-	keep NPNAME1 fips classif_2000 circ_2000 
 	
 	replace classif_2000 = 0 if classif_2000==. 
 
+collapse (mean) classif_2000 largepaper [pw=circ_2000], by(fips)
 	
-collapse (mean) classif_2000 [pw=circ_2000], by(fips)
-
+	drop if largepaper!=0
 	
 merge 1:m fips using "$base/data/master_data_county_level"
 
-keep if _merge ==3
+drop if _merge ==2
    drop _merge
    
     
@@ -2508,9 +2501,6 @@ label var post_CL_		  	 "Post-CL"
 label var post_CL_classif 	 "Post-CL $\times$ Classified Mgr."
 
 
-
-	keep if year!=2008 /*only campaign-specific media consumption questions in 2008*/ 
-	
 	
 rename read_newspaper_national read_national
 
@@ -2577,9 +2567,9 @@ est clear
 	
 	
 
-*/
-*/
 
+	
+	
 
 	
 
@@ -2608,11 +2598,9 @@ use "$base/data/master_data_newspaper_level", clear
 	
 	replace classif_2000=0 if classif_2000==.
 	
-	collapse (mean) classif_2000 [pw=circ_2000], by(fips)
+	collapse (mean) classif_2000 largepaper [pw=circ_2000], by(fips)
 
-		
-	gen newspHQ_2000 = 1
-
+	drop if largepaper!=0
 
 	merge 1:m fips using "$base/data/master_data_county_level"
 
@@ -2655,9 +2643,6 @@ use "$base/data/master_data_newspaper_level", clear
 		label var post_CL_		  	 "Post-CL"
 		label var post_CL_classif 	 "Post-CL $\times$ Classified Mgr."
 
-		
-	
-	keep if newspHQ_2000 == 1
 	
 
 	label var ihs_nytimescom_count "\shortstack{Visits to \\ \url{nytimes.com} \\ (ihs)}"
@@ -3004,26 +2989,18 @@ est clear
 
 
 use "$base/data/master_data_newspaper_level", clear
-
 	
 	keep if year==2000
-	
-	keep NPNAME1 fips classif_2000 circ_2000
-	
+
 	replace classif_2000= 0 if classif_2000==. 
 	
 	
 collapse (mean) classif_2000 [pw=circ], by(fips)
 	
-gen newspHQ_2000 = 1
-
-
 merge 1:m fips using "$base/data/master_data_county_level"
+drop if _merge==2
 drop _merge
-	
 
-keep if newspHQ_2000 ==1	
-	
 
 merge 1:1 fips year using $base\data\political\turnout_data_notmerged, keepusing(house_dev sen_dev turnout_house turnout_sen)
 
@@ -3133,25 +3110,18 @@ use "$base/data/master_data_newspaper_level", clear
 
 	keep if year==2000
 	
-	keep NPNAME1 fips classif_2000 circ_2000
-
 	replace classif_2000 = 0 if classif_2000==.
 
-		
-collapse (mean) classif_2000 = classif [pw=circ_2000], by(fips)
-
 	
-gen newspHQ_2000 = 1
+collapse (mean) classif_2000  [pw=circ_2000], by(fips)
 
 
 merge 1:m fips using "$base/data/master_data_county_level"
 
+drop if _merge==2
 drop _merge
 
 tempfile np
-
-
-keep if newspHQ_2000 == 1
 
 
 

@@ -1,0 +1,28 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                    &\multicolumn{1}{c}{read\_newspaper\_dummy}&\multicolumn{1}{c}{\shortstack{News propensity $\geq$ median, \\ Classif. propensity < median}}&\multicolumn{1}{c}{\shortstack{News propensity < median, \\ Classif. propensity $\geq$ median}}\\
+\midrule
+Post-CL             &       0.016         &       0.029         &       0.005         \\
+                    &     (0.012)         &     (0.032)         &     (0.019)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&      -0.057\sym{**} &      -0.122\sym{***}&      -0.019         \\
+                    &     (0.026)         &     (0.044)         &     (0.025)         \\
+\addlinespace
+Respondent controls &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs  &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+County FEs, Year FEs &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &     106,348         &      30,133         &      34,831         \\
+Number of counties  &       1,192         &       1,087         &       1,167         \\
+R$^2$               &        0.05         &        0.09         &        0.06         \\
+Mean dependent variable&        0.75         &        0.82         &        0.71         \\
+\bottomrule
+\end{tabular}
+}

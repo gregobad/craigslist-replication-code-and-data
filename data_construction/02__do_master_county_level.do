@@ -9,9 +9,6 @@ global base   = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and
 
 
 
-tempfile ISPs
-save `ISPs', empty replace
-
 	
 
 ****Start with reading in controls
@@ -195,12 +192,7 @@ rename geo_id fips
 		     gen CL_entry_year`v'  = year(dofm(CL_entry_ym`v'))
 		  
 									}				
-			
-				gen ever_CL_ = 0
-			replace ever_CL_ = 1 if CL_entry_year_ != .
-			
-		
-			
+					
 								
 		save "$base\data\master_data_county_level", replace
 	
@@ -234,7 +226,7 @@ use "$base\data\master_data_county_level"
 	
 	*** merge in number of ISPs by county 
 	
-	merge 1:1 fips year using "$base\data\controls\isps", keepusing(num_ISPs_ipo)
+	merge 1:1 fips year using "$base\data\ISPs\isps", keepusing(num_ISPs_ipo)
 
 	drop if _merge==2
 	   drop _merge
@@ -255,7 +247,7 @@ use "$base\data\master_data_county_level"
 	*** merge in time-varying population
 	
 
-	merge 1:1 fips year using "$base\data\population\total_pop"
+	merge 1:1 fips year using "$base\data\controls\total_pop"
 
 	drop if _merge==2
 	   drop _merge
@@ -267,13 +259,13 @@ use "$base\data\master_data_county_level"
 	***********************************************************
 		
 	
-	merge 1:1 fips year using "$base\data\population\voting_age_pop"
+	merge 1:1 fips year using "$base\data\controls\voting_age_pop"
 
 	drop if _merge==2
 	   drop _merge
 	   
 	
-	merge 1:1 fips year using "$base\data\population\white_pop"
+	merge 1:1 fips year using "$base\data\controls\white_pop"
 
 	drop if _merge==2
 	   drop _merge
@@ -284,7 +276,7 @@ use "$base\data\master_data_county_level"
 	   drop white_pop
 	   
 	
-	merge 1:1 fips year using "$base\data\population\black_pop"
+	merge 1:1 fips year using "$base\data\controls\black_pop"
 
 	drop if _merge==2
 	   drop _merge
@@ -295,7 +287,7 @@ use "$base\data\master_data_county_level"
 	   drop black_pop
 	   
 	   
-	merge 1:1 fips year using "$base\data\population\hisp_pop"
+	merge 1:1 fips year using "$base\data\controls\hisp_pop"
 
 	drop if _merge==2
 	   drop _merge
@@ -359,7 +351,7 @@ use "$base\data\master_data_county_level"
 			
 			
 	order year fips  url* /*
-		*/  CL_entry_year* CL_entry_ym* ever_CL* post_CL* /*
+		*/  CL_entry_year* CL_entry_ym* post_CL* /*
 		*/  *_2000
 		
 		
@@ -395,7 +387,7 @@ use "$base\data\master_data_county_level"
 	 sort fips year
 	 
 	 order year fips  url*  CL_entry_year* CL_entry_ym* /*
-		*/  ever_CL* post_CL*  *_2000
+		*/  post_CL*  *_2000
 		
 		
 			*** drop counties with missing controls
@@ -422,14 +414,19 @@ use "$base\data\master_data_county_level"
 	   
 	*** merge in state IDs
 	
-	import excel using "$base\data\_counties_to_DMAs\county_names_fips.xlsx", clear first
+	import delimited using "$base\data\county_fips_codes.csv", clear
 
-	rename FIPS fips
+	    gen fips = string(statefips) + string(countyfips) if length(string(statefips))==2 & length(string(countyfips))==3
+	replace fips = string(statefips) + "0"  + string(countyfips) if length(string(statefips))==2 & length(string(countyfips))==2
+	replace fips = string(statefips) + "00" + string(countyfips) if length(string(statefips))==2 & length(string(countyfips))==1	
+	replace fips = "0" + string(statefips)  + string(countyfips) if length(string(statefips))==1 & length(string(countyfips))==3	
+	replace fips = "0" + string(statefips)  + "0" + string(countyfips) if length(string(statefips))==1 & length(string(countyfips))==2
+	replace fips = "0" + string(statefips)  + "00" + string(countyfips) if length(string(statefips))==1 & length(string(countyfips))==1
 	
-	rename State state
-		
-	duplicates drop fips, force
-
+	
+	destring fips, replace 
+	keep fips stateabbr
+	rename stateabbr state
 	
 	merge 1:m fips using "$base\data\master_data_county_level"
 	
@@ -468,6 +465,9 @@ use "$base\data\master_data_county_level"
 	
 	label var years_CL_ "Years post-CL"
 	
+
+	
+	order state fips year url* CL_entry_* post_CL* years_CL*
 				
 				
 	save "$base\data\master_data_county_level", replace	

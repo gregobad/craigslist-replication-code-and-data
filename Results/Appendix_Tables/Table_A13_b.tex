@@ -1,0 +1,28 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                    &\multicolumn{1}{c}{\shortstack{Read newspaper, national\\dummy}}&\multicolumn{1}{c}{\shortstack{Watched TV\\dummy}}&\multicolumn{1}{c}{\shortstack{Listened radio\\dummy}}\\
+\midrule
+Post-CL             &       0.003         &       0.011         &       0.009         \\
+                    &     (0.010)         &     (0.008)         &     (0.008)         \\
+\addlinespace
+Post-CL $\times$ Classified Mgr.&       0.040\sym{*}  &      -0.013         &      -0.006         \\
+                    &     (0.024)         &     (0.009)         &     (0.009)         \\
+\addlinespace
+Respondent controls &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Baseline controls $\times$ Year FEs &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+Log population, num. ISPs  &         Yes         &         Yes         &         Yes         \\
+\addlinespace
+County FEs, Year FEs &         Yes         &         Yes         &         Yes         \\
+\midrule
+Observations        &     106,348         &     106,432         &     147,090         \\
+Number of counties  &       1,192         &       1,192         &       1,193         \\
+R$^2$               &        0.09         &        0.03         &        0.05         \\
+Mean dependent variable&        0.03         &        0.92         &        0.37         \\
+\bottomrule
+\end{tabular}
+}

@@ -42,7 +42,7 @@ Figure B.5 | `___do_Figures_Appendix.do` | Yes
 Figure B.6 | `N/A` | 
 Figure B.7 | `N/A` | 
 Table A.1  | `___do_Tables.do` | 
-Table A.2  | `___do_Tables_Appendix.do`  | 
+Table A.2  | `___do_Tables_Appendix.do`  | Yes (panel c)
 Table A.3  | `___do_Tables_Appendix.do`  | 
 Table A.4  | `___do_Tables_Appendix.do` | 
 Table A.5  | `___do_Tables_Appendix.do` | 
@@ -81,6 +81,7 @@ Directory | Description
 `Classified_Prices` | Digitized data from SRDS on classified rates at the newspaper-year level
 `Comscore' | Aggregated website visits recorded by Comscore (raw data not included)
 `craigslist_expansion` | Data on opening dates of local Craigslist sites
+`controls' | Data on county-level socio-economic characteristics from the US census and BLS 
 `E&P` | Digitized data from the Editor and Publisher yearbooks
 `GfK-MRI` | Fitted models and predicted values of interest in news and classified sections given reader demographics, estimated in the GfK-MRI data (raw data not included)
 `ISPs' | Data from the FCC on the number of Internet service providers by zip-code
