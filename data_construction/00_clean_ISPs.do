@@ -2,7 +2,7 @@ set more off
 clear all 
 
 
-global base = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
+global base = "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
 
 cd $base\data\ISPs\raw
 

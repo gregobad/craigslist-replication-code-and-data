@@ -423,12 +423,12 @@ restore
 *** Politics coverage, topic weight		
 		
 		
-did_multiplegt ihs_congress_name_mentions /*
+did_multiplegt topic2 /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_ /*
 			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
-			*/ controls(ihs_total_articles log_pop num_ISPs ) /*
+			*/ controls(log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5c_1.dta")
 
@@ -444,7 +444,7 @@ preserve
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2))
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-0.06(0.02)0.02)
 			graph export "$base_results/Figures/Figure_5c_1.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5c_1.dta"	
@@ -454,12 +454,12 @@ restore
 		
 	
 
-did_multiplegt ihs_congress_name_mentions /*
+did_multiplegt topic2 /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_classif /*
 			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
-			*/ controls(ihs_total_articles log_pop num_ISPs ) /*
+			*/ controls(log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5c_2.dta")
 
@@ -475,7 +475,7 @@ preserve
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2))
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-0.06(0.02)0.02)
 			graph export "$base_results/Figures/Figure_5c_2.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5c_2.dta"	

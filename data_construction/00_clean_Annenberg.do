@@ -2,8 +2,8 @@ set more off
 
 
 ** Directories
-global base0 "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
-global base  "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data\annenberg"
+global base0 "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
+global base  "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data\annenberg"
 
 
 

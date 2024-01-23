@@ -9,6 +9,8 @@ This repository contains replication code and data for Djourelova, Durante, and 
 2. R, Stata scripts in `analysis` run the analyses and produce tables and figures in the paper from the processed data. Processed datasets are included in the archive in the `data` folder. These scripts may be run in any order. See below for indices describing which file produces each table or figure in the manuscript and appendices. Some of the tables / figures also depend on proprietary data. These are noted in the indices.
 
 
+Stata dependencies: Stata 18 SE; reghdfe, distinct, did_mutiplegt, binscatter, zscore, regsave, estout, eclplot, shp2dta, geoinpoly
+
 
 # Manuscript Figures / Tables to Source Code Index
 
