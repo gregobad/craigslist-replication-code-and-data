@@ -5,7 +5,7 @@ set more off
 clear all 
 
 
-global base   = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
+global base   = "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
 
 
 
@@ -465,9 +465,9 @@ use "$base\data\master_data_county_level"
 	
 	label var years_CL_ "Years post-CL"
 	
-
+	cap drop land_area
 	
-	order state fips year url* CL_entry_* post_CL* years_CL*
+	order fips county_state state state_ DMA_code_ year url* CL_entry_* post_CL* years_CL*
 				
 				
 	save "$base\data\master_data_county_level", replace	

@@ -1,5 +1,5 @@
 
-global base   = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
+global base   = "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
 
 clear all
 set more off
@@ -91,12 +91,13 @@ use "$base\data\E&P\EP_panel_1995_2010", clear
 						*/ accountability_mentions {
 						
 						gen ihs_`var' = asinh(`var')
+						drop `var'	
 							
 						}
 			
 			gen ihs_total_articles = asinh(total_articles_mentionsections)
 				
-			keep NPNAME1 year *_mentions total_articles ihs_total_articles 		
+			keep NPNAME1 year *_mentions ihs_total_articles 		
 
 			merge 1:1 NPNAME1 year using $base\data\master_data_newspaper_level
 
@@ -156,6 +157,12 @@ use "$base\data\E&P\EP_panel_1995_2010", clear
 			label var topic3 "Crime"
 			label var topic4 "Entertainment"
 				
+			
+			*** some unnecessary vars
+			cap drop A NL_originalname circ_abs share_white share_black share_hisp
+			
+			order NPNAME1 NPNAME1_ year state* dma_2000 DMA_code county_state fips zip url* CL_entry_* post_CL* years_CL* largepaper classif* circ* jobs* *editors price_y num_pages group* num_ISPs pop_ log_pop_ voting_pop* 
+
 	
 			save $base/data/master_data_newspaper_level, replace
 			

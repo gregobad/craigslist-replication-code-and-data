@@ -1,4 +1,4 @@
-global base         = "C:\Users\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
+global base         = "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
 global base_results = "C:\Users\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
 
 clear all
