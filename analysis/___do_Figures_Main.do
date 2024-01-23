@@ -18,8 +18,7 @@ set more off
 
    use $base/data/master_data_county_level, clear
    
-   collapse (mean) num_ISPs post_CL_ , by(year)
-
+ 
    tsset year
    
    label var post_CL_        "Share counties with CL"
@@ -38,12 +37,6 @@ set more off
 ***** Time-series of CL visits vs. visits to other classified websites
    
 use $base/data/Comscore/visitcounts	, clear
-	
-		
-collapse (sum) craigslistorg_count /*
-			*/ monstercom_count /*
-			*/ ebaycom_count /*
-			*/ realtorcom_count  all_count, by(year)
 
 
 foreach var in craigslistorg_count /*
