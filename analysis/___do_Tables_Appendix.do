@@ -1,5 +1,5 @@
 global base         = "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
-global base_results = "C:\Users\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
+global base_results = "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
 
 clear all
 set more off
@@ -2664,7 +2664,7 @@ use "$base/data/master_data_newspaper_level", clear
 
 eststo: reghdfe `var'  post_CL_  post_CL_classif    /*
 		*/ log_pop num_ISPs /*
-		*/ all_count , absorb(year fips i.year#c.($basevars)) /*
+		*/ total , absorb(year fips i.year#c.($basevars)) /*
 		*/ cluster(CL_area)
 				qui sum `var'  if e(sample)
 				estadd scalar  m r(mean)
@@ -2680,7 +2680,7 @@ estfe *, labels(year "Year FE"  fips "County FE")
 esttab  using $base_results/Appendix_Tables/Table_A14.tex,  r2 label replace se star(* 0.1 ** 0.05 *** 0.01) booktabs  nonotes b(3) se(3) ///		
 		drop( _cons ) ///
 		order(post_CL_) ///
-		indicate("Baseline controls $\times$ Year FEs = 0.year#c.*"  "Log population, \#ISPs  = log_pop num_ISPs" "County FEs, Year FEs = 0.fips 0.year" "Total Comscore visits (ihs) = all_count",  labels("Yes"  "No")) ///
+		indicate("Baseline controls $\times$ Year FEs = 0.year#c.*"  "Log population, \#ISPs  = log_pop num_ISPs" "County FEs, Year FEs = 0.fips 0.year" "Total Comscore visits (ihs) = total",  labels("Yes"  "No")) ///
 		stats(N fips r2 m, label( "Observations" "Number of counties" "R$^2$" "Mean dependent variable"  ) fmt(%13.0fc %13.0fc %9.2f %9.2f))
 est clear
 		
