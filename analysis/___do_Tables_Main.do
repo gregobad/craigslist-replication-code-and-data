@@ -1,5 +1,5 @@
-global base         = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
-global base_results = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
+global base         = "C:\Users\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
+global base_results = "C:\Users\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
 
 clear all
 set more off

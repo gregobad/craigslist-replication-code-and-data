@@ -1,5 +1,5 @@
-global base         = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data"
-global base_results = "C:\Users\mdjou\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
+global base         = "C:\Users\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
+global base_results = "C:\Users\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
 
 clear all
 set more off
@@ -81,7 +81,7 @@ did_multiplegt split_vote /*
 			*/ fips  /*
 			*/ year /*
 			*/ post_CL_classif /*
-			*/, trends_nonparam(exp_year_) weight(voting_pop_)   robust_dynamic breps(100) /*
+			*/, firstdiff_placebo trends_nonparam(exp_year_) weight(voting_pop_)   robust_dynamic breps(100) /*
 			*/ controls(log_pop num_ISPs ) /*
 			*/ placebo(2) dynamic(1) /*
 			*/ cluster(CL_area_) save_results("$base_results/Appendix_Figures/Figure_A1.dta")
@@ -94,12 +94,12 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(msize(medlarge) color(navy)) ciopts(color(navy*0.5) lwidth(thick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Election cycles Pre/Post CL") ytitle(" ") /*
-		*/  xsize(1.2) ysize(1) 
+		*/  xsize(1.2) ysize(1) ylabel(-0.04(0.02)0.02) xscale(range(-3.2 1.2))
 			graph export "$base_results/Appendix_Figures/Figure_A1.pdf",  replace	
 
 		cap erase "$base_results/Appendix_Figures/Figure_A1.dta"	
@@ -198,7 +198,7 @@ did_multiplegt extremist_in_eitherpri /*
 			*/ fips  /*
 			*/ year /*
 			*/ post_CL_classif /*
-			*/, trends_nonparam(district_code) weight(w_cty_dist) average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo trends_nonparam(district_code) weight(w_cty_dist) average_effect  robust_dynamic breps(100) /*
 			*/ controls(log_pop num_ISPs) /*
 			*/ placebo(3) dynamic(2) /*
 			*/ cluster(state_dist_) save_results("$base_results/Appendix_Figures/Figure_A2_a.dta")
@@ -211,13 +211,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/ estopts(msize(medlarge) color(navy)) eplottype(scatter) ciopts(color(navy*0.5) lwidth(thick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
-		*/  xtitle("Election cycles Pre/Post CL") ytitle(" ") /*
+		*/  xtitle("Election cycles Pre/Post CL")  /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-4(1)2)
+		*/  xlabel(-4(1)2) xscale(range(-4.2 2.2))
 			graph export "$base_results/Appendix_Figures/Figure_A2_a.pdf",  replace	
 
 		cap erase "$base_results/Appendix_Figures/Figure_A2_a.dta"	
@@ -235,7 +235,7 @@ did_multiplegt extremist_in_general /*
 			*/ fips  /*
 			*/ year /*
 			*/ post_CL_classif /*
-			*/, trends_nonparam(district_code) weight(w_cty_dist) average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo trends_nonparam(district_code) weight(w_cty_dist) average_effect  robust_dynamic breps(100) /*
 			*/ controls(log_pop num_ISPs) /*
 			*/ placebo(3) dynamic(2) /*
 			*/ cluster(state_dist_) save_results("$base_results/Appendix_Figures/Figure_A2_b.dta")
@@ -248,13 +248,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(msize(medlarge) color(navy)) ciopts(color(navy*0.5) lwidth(thick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
-		*/  xtitle("Election cycles Pre/Post CL") ytitle(" ") /*
+		*/  xtitle("Election cycles Pre/Post CL")  /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-4(1)2)
+		*/  xlabel(-4(1)2) xscale(range(-4.2 2.2))
 			graph export "$base_results/Appendix_Figures/Figure_A2_b.pdf",  replace	
 
 		cap erase "$base_results/Appendix_Figures/Figure_A2_b.dta"	
@@ -272,7 +272,7 @@ did_multiplegt extremist_wins /*
 			*/ fips  /*
 			*/ year /*
 			*/ post_CL_classif /*
-			*/, trends_nonparam(district_code) weight(w_cty_dist) average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo trends_nonparam(district_code) weight(w_cty_dist) average_effect  robust_dynamic breps(100) /*
 			*/ controls(log_pop num_ISPs) /*
 			*/ placebo(3) dynamic(2) /*
 			*/ cluster(state_dist_) save_results("$base_results/Appendix_Figures/Figure_A2_c.dta")
@@ -285,13 +285,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(msize(medlarge) color(navy)) ciopts(color(navy*0.5) lwidth(thick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Election cycles Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-4(1)2)
+		*/  xlabel(-4(1)2) xscale(range(-4.2 2.2))
 			graph export "$base_results/Appendix_Figures/Figure_A2_c.pdf",  replace	
 
 		cap erase "$base_results/Appendix_Figures/Figure_A2_c.dta"	

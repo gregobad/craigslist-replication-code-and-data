@@ -7,20 +7,7 @@ set more off
 
 
 
-**** baseline county characteristics
-	
-global basevars share_white_2000 /*
-			*/ share_black_2000 /*
-			*/ share_hisp_2000 /*
-			*/ age_2000 /*
-			*/ income_2000 /*
-			*/ unemployment_2000 /*
-			*/ pct_college_2000 /*
-			*/ pct_rental_2000 /*
-			*/ share_urban_2000 /*
-			*/ pres_turnout_2000 
-	
-	
+
 
 
 	   
@@ -253,7 +240,7 @@ did_multiplegt cl /*
 			*/ fips  /*
 			*/ year /*
 			*/ post_CL_ /*
-			*/, average_effect robust_dynamic breps(50) /*
+			*/, firstdiff_placebo average_effect robust_dynamic breps(50) /*
 			*/ controls(total log_pop num_ISPs) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_4.dta")
@@ -264,13 +251,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  eplottype(scatter) estopts(msize(medium) color(navy)) ciopts(color(navy*0.5) lwidth(medthick))   /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) 
+		*/  xlabel(-5(1)4)  xscale(range(-5.2 4.2))
 			graph export "$base_results/Figures/Figure_4.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_4.dta"	
@@ -290,6 +277,19 @@ drop if largepaper >0
 
 		
 	
+**** baseline county characteristics
+	
+global basevars share_white_2000 /*
+			*/ share_black_2000 /*
+			*/ share_hisp_2000 /*
+			*/ age_2000 /*
+			*/ income_2000 /*
+			*/ unemployment_2000 /*
+			*/ pct_college_2000 /*
+			*/ pct_rental_2000 /*
+			*/ share_urban_2000 /*
+			*/ pres_turnout_2000 
+	
 
 ************************************************************
 	
@@ -304,7 +304,7 @@ did_multiplegt jobscount /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_ /*
-			*/, average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
 			*/ controls(log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5a_1.dta")
@@ -315,13 +315,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) ylabel(-5(1)3)
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-5(1)3)
 			graph export "$base_results/Figures/Figure_5a_1.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5a_1.dta"	
@@ -335,7 +335,7 @@ did_multiplegt jobscount /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_classif /*
-			*/, average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
 			*/ controls(log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5a_2.dta")
@@ -346,13 +346,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(color(navy)) ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) ylabel(-5(1)3)
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-5(1)3)
 			graph export "$base_results/Figures/Figure_5a_2.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5a_2.dta"	
@@ -370,7 +370,7 @@ did_multiplegt circ /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_ /*
-			*/, average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
 			*/ controls(log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5b_1.dta")
@@ -381,13 +381,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4)  ylabel(-0.02(0.005)0.01)
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-0.02(0.005)0.01)
 			graph export "$base_results/Figures/Figure_5b_1.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5b_1.dta"	
@@ -400,7 +400,7 @@ did_multiplegt circ /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_classif /*
-			*/, average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
 			*/ controls(log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5b_2.dta")
@@ -411,13 +411,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(color(navy)) ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) ylabel(-0.02(0.005)0.01)
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-0.02(0.005)0.01)
 			graph export "$base_results/Figures/Figure_5b_2.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5b_2.dta"	
@@ -434,7 +434,7 @@ did_multiplegt ihs_congress_name_mentions /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_ /*
-			*/, average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
 			*/ controls(ihs_total_articles log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5c_1.dta")
@@ -445,13 +445,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(color(navy)) ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) 
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2))
 			graph export "$base_results/Figures/Figure_5c_1.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5c_1.dta"	
@@ -465,7 +465,7 @@ did_multiplegt ihs_congress_name_mentions /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_classif /*
-			*/, average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
 			*/ controls(ihs_total_articles log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5c_2.dta")
@@ -476,13 +476,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) 
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2))
 			graph export "$base_results/Figures/Figure_5c_2.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5c_2.dta"	
@@ -499,7 +499,7 @@ did_multiplegt ihs_congress_name_mentions /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_ /*
-			*/, average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
 			*/ controls(ihs_total_articles log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5d_1.dta")
@@ -510,13 +510,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) 
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2))
 			graph export "$base_results/Figures/Figure_5d_1.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5d_1.dta"	
@@ -529,7 +529,7 @@ did_multiplegt ihs_congress_name_mentions /*
 			*/ NPNAME1_  /*
 			*/ year /*
 			*/ post_CL_classif /*
-			*/, average_effect  robust_dynamic breps(100) /*
+			*/, firstdiff_placebo average_effect  robust_dynamic breps(100) /*
 			*/ controls(ihs_total_articles log_pop num_ISPs ) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_5d_2.dta")
@@ -540,13 +540,13 @@ preserve
 			
 			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) ciopts(color(navy*0.5) lwidth(medthick))   /*
-		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
+		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
+		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
 		*/  legend(off)  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4)  
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) 
 			graph export "$base_results/Figures/Figure_5d_2.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5d_2.dta"	
@@ -557,4 +557,5 @@ restore
 	
 	
 	
+
 

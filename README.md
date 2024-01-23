@@ -123,3 +123,30 @@ There are four proprietary or access-restricted data sets used in the paper. The
 1. National Annenberg Election Survey (NAES) restricted data. These data are used in the analysis of self-reported newspaper reading (reported in Table 6(b)). [Visit the NAES home page to request access.](https://www.annenbergpublicpolicycenter.org/political-communication/naes/)
 
 1. Comscore WRDS web traffic panel. These data are used in the analysis of visits to the Craigslist.org domain (Figure 4). Visit https://wrds-www.wharton.upenn.edu/pages/about/data-vendors/comscore/ for licensing inquiries.
+
+
+# Data Sources
+
+BONICA, A. (2016): “Database on Ideology, Money in Politics, and Elections,” Stanford, CA: Stanford
+University Libraries. https://data.stanford.edu/dime.
+
+COMSCORE (2010): “WRDS ComScore,” Wharton Research Data Services. https://wrds-www.wharton.
+upenn.edu/pages/about/data-vendors/comscore/, accessed April, 2023.
+
+E&P (2010): Editor & Publisher International Year Book, 1995-2010.
+
+FCC (2008): “Federal Communications Commission Form 477 Additional Data, 1999-2008,” https://www.
+fcc.gov/general/fcc-form-477-additional-data, accessed April, 2023.
+
+GFK-MRI (2010): “MRI-Simmons: Survey of the American Consumer 1999-2010,” GfK -
+Mediamark Research Intelligence. https://www.mrisimmons.com/our-data/national-studies/
+survey-american-consumer/.
+
+NAES (2008): “Annenberg Public Policy Center: National Annenberg Election Survey
+2000, 2004, 2008,” University of Pennsylvania. https://www.annenbergpublicpolicycenter.org/
+2008-naes-telephone-and-online-data-sets/, accessed April, 2023.
+
+NEWSBANK (2010): “Access World News Database,” https://www.newsbank.com/libraries/military/
+solutions/access-world-news.
+
+SRDS (2006): Standard Rate and Data Service: Newspaper Advertising Source, 1995-2006.
