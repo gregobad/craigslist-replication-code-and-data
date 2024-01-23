@@ -63,7 +63,7 @@ Table A.19  | `___do_Tables_Appendix.do` |
 Table A.20  | `___do_Tables_Appendix.do` |
 Table B.1  | `___do_Figures_Main.do` | 
 Table B.2  | `___do_Tables_Appendix.do` |
-Table B.3  | `/data_construction/01_Topic Model.ipynb` | Yes
+Table B.3  | `data_construction/01_Topic Model.ipynb` | Yes
 
 # Description of Data Files
 
@@ -80,6 +80,7 @@ Directory | Description
 `census` | Data from the US census used to crosswalk census tracts to counties, and for intercensal population estimates at county level
 `Classified_Prices` | Digitized data from SRDS on classified rates at the newspaper-year level
 `Comscore` | Aggregated website visits recorded by Comscore (raw data not included)
+`controls` | Data for control variables used in regressions
 `craigslist_expansion` | Data on opening dates of local Craigslist sites
 `controls' | Data on county-level socio-economic characteristics from the US census and BLS 
 `E&P` | Digitized data from the Editor and Publisher yearbooks
@@ -88,6 +89,7 @@ Directory | Description
 `Newspapers.com` | Data on the number of classified pages per issue at the newspaper-year level, extracted from the Newspapers.com archive
 `Newspapers_content` | Keyword counts and topic models extracted from the NewsBank database of newspaper content
 `political` | Electoral data at county and county x congressional district level, along with information on members of congress used to generate keyword searches
+`population` | County-level population data
 
 
 
