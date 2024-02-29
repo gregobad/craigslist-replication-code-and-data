@@ -9,9 +9,12 @@ This repository contains replication code and data for Djourelova, Durante, and 
 2. R, Stata scripts in `analysis` run the analyses and produce tables and figures in the paper from the processed data. Processed datasets are included in the archive in the `data` folder. These scripts may be run in any order. See below for indices describing which file produces each table or figure in the manuscript and appendices. Some of the tables / figures also depend on proprietary data. These are noted in the indices.
 
 
-Dependencies: 
+# Computational Requirements and Dependencies: 
 
-Stata (code last run with version 18): reghdfe, distinct, did_mutiplegt, binscatter, zscore, regsave, estout, eclplot, shp2dta, geoinpoly (all as of Jan 2024)
+The code was last run on a 4-core Intel-based laptop with Windows 11 Pro. The code took less than 2 hours to execute (excluding the processing of proprietary datasets).
+
+Stata dependencies (code last run with version 18 SE): reghdfe, distinct, did_mutiplegt, binscatter, zscore, regsave, estout, eclplot, shp2dta, geoinpoly, erepost (all as of Jan 2024)
+
 
 
 
@@ -119,26 +122,52 @@ Script | Requires Proprietary Data?
 `02__do_master_newspaper_level.do` |
 
 
+# Sources for Public Data Sets
+
+1. Editor & Publisher yearbooks (E&P, 2010). We digitized the print yearbook editions for the years 1995-2010 using OCR software. Copies of the yearbooks can be located at https://www.worldcat.org/title/2210361. The dataset including the variables used in the analysis is provided in this package. 
+
+2. Standard Rate and Data Service: Newspaper Advertising Source (SRDS, 2006). We digitized the print editions of the yearbooks for the years 1995-2006 using a data transcription service. Copies of the yearbooks can be located at https://search.worldcat.org/title/56675270. The dataset including the varaiables used in the analysis is provided in this package.
+
+3. Number of Internet Service Providers by zipcode (FCC, 2008). Publicly available at https://www.fcc.gov/form-477-data-zip-codes-number-high-speed-service-providers, and included in this package. 
+
+4. Database on Ideology, Money in Politics, and Election (BONICA, 2016). Publicly available at XXXXXXXXXXXXXXXXXXXXXXXXXXXXX , and included in this package.
+ 
+5. Turnout in House, Senate and Presidential elections from XXXXXXXXXXXXXXXXX . XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX    
+
+6. County-level socio-economic characteristcis from the 2000 US Census (US Census Bureau, 2000). Publicly available at https://data.census.gov/, and included in this package.
+
+7. County-level unemployment rates from the Bureau of Labor Statistics (BLS, 2000). Publicly available at https://www.bls.gov/lau/laucnty00.txt, and included in this package.
+
+9. Population estimates by county and year from the National Center for Health Statistics (NCHS, 2010). Publicly available at https://www.cdc.gov/nchs/nvss/
+bridged_race.htm.
+
+
+
 # Sources for Proprietary Data Sets
 
 There are four proprietary or access-restricted data sets used in the paper. These are:
 
-1. NewsBank full-text archive. These data are required to run the scripts in `data_construction/newsbank_server`, which generate counts of mentions of politician names and other keywords in newspaper text. We licensed the NewsBank data through the Stanford University Libraries. Contact `jmcdowell@newsbank.com` for licensing inquiries. 
-
-1. GfK-MRI Survey of the American Consumer. These data are used in the analysis of self-reported newspaper reading (reported in Table 6(a)). Contact `Adriane.Heimann@mrisimmons.com` for licensing inquiries.
-
-1. National Annenberg Election Survey (NAES) restricted data. These data are used in the analysis of self-reported newspaper reading (reported in Table 6(b)). [Visit the NAES home page to request access.](https://www.annenbergpublicpolicycenter.org/political-communication/naes/)
-
-1. Comscore WRDS web traffic panel. These data are used in the analysis of visits to the Craigslist.org domain (Figure 4). Visit https://wrds-www.wharton.upenn.edu/pages/about/data-vendors/comscore/ for licensing inquiries.
+1. NewsBank full-text archive (NEWSBANK, 2010). These data are required to run the scripts in `data_construction/newsbank_server`, which generate counts of mentions of politician names and other keywords in newspaper text. We licensed the NewsBank data through the Stanford University Libraries. Contact `jmcdowell@newsbank.com` for licensing inquiries. 
 
 
-# Data Sources
+1. GfK-MRI Survey of the American Consumer (GFK-MRI, 2010). These data are used in the analysis of self-reported newspaper reading (reported in Table 6(a)). Contact `Adriane.Heimann@mrisimmons.com` for licensing inquiries.
+
+1. National Annenberg Election Survey (NAES, 2008) restricted data. These data are used in the analysis of self-reported newspaper reading (reported in Table 6(b)). [Visit the NAES home page to request access.](https://www.annenbergpublicpolicycenter.org/political-communication/naes/)
+
+1. Comscore WRDS web traffic panel (COMSCORE, 2010). These data are used in the analysis of visits to the Craigslist.org domain (Figure 4). Visit https://wrds-www.wharton.upenn.edu/pages/about/data-vendors/comscore/ for licensing inquiries.
+
+
+# Data References
 
 BONICA, A. (2016): “Database on Ideology, Money in Politics, and Elections,” Stanford, CA: Stanford
 University Libraries. https://data.stanford.edu/dime.
 
+Bureau of Labor Statistics (2000): “Labor Force Data by County, 2000 Annual Averages,” https://www.bls.gov/lau/laucnty00.txt.
+
 COMSCORE (2010): “WRDS ComScore,” Wharton Research Data Services. https://wrds-www.wharton.
 upenn.edu/pages/about/data-vendors/comscore/, accessed April, 2023.
+
+U.S. Census Bureau (2000): “Decennial Census data release by county,” Retrieved from https://factfinder.census.gov.
 
 E&P (2010): Editor & Publisher International Year Book, 1995-2010.
 
@@ -155,5 +184,7 @@ NAES (2008): “Annenberg Public Policy Center: National Annenberg Election Surv
 
 NEWSBANK (2010): “Access World News Database,” https://www.newsbank.com/libraries/military/
 solutions/access-world-news.
+
+NCHS (2010): National Center for Health Statistics and U.S. Census Bureau “Vintage 2010 postcensal estimates of the resident population of the United States,” https://nchs/nvss/bridged_race.
 
 SRDS (2006): Standard Rate and Data Service: Newspaper Advertising Source, 1995-2006.

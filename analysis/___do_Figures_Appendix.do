@@ -1,5 +1,5 @@
 global base         = "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data"
-global base_results = "C:\Users\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
+global base_results = "C:\Users\\`c(username)'\OneDrive\Desktop\craigslist-replication-code-and-data\Results"
 
 clear all
 set more off
@@ -92,12 +92,19 @@ did_multiplegt split_vote /*
 preserve
 			use "$base_results/Appendix_Figures/Figure_A1.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment, supby(post) /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(msize(medlarge) color(navy)) ciopts(color(navy*0.5) lwidth(thick))   /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle) msize(medlarge))  ciopts1(color(red*0.4) lwidth(thick))  estopts2(color(navy) msize(medlarge))  ciopts2(color(navy*0.5) lwidth(thick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Election cycles Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) ylabel(-0.04(0.02)0.02) xscale(range(-3.2 1.2))
 			graph export "$base_results/Appendix_Figures/Figure_A1.pdf",  replace	
@@ -209,12 +216,18 @@ did_multiplegt extremist_in_eitherpri /*
 preserve
 			use "$base_results/Appendix_Figures/Figure_A2_a.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
-		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/ estopts(msize(medlarge) color(navy)) eplottype(scatter) ciopts(color(navy*0.5) lwidth(thick))   /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment, supby(post) /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle) msize(medlarge))  ciopts1(color(red*0.4) lwidth(thick))  estopts2(color(navy) msize(medlarge))  ciopts2(color(navy*0.5) lwidth(thick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Election cycles Pre/Post CL")  /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-4(1)2) xscale(range(-4.2 2.2))
@@ -246,12 +259,18 @@ did_multiplegt extremist_in_general /*
 preserve
 			use "$base_results/Appendix_Figures/Figure_A2_b.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
-		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(msize(medlarge) color(navy)) ciopts(color(navy*0.5) lwidth(thick))   /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  supby(post) /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle) msize(medlarge))  ciopts1(color(red*0.4) lwidth(thick))  estopts2(color(navy) msize(medlarge))  ciopts2(color(navy*0.5) lwidth(thick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Election cycles Pre/Post CL")  /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-4(1)2) xscale(range(-4.2 2.2))
@@ -283,12 +302,18 @@ did_multiplegt extremist_wins /*
 preserve
 			use "$base_results/Appendix_Figures/Figure_A2_c.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
-		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(msize(medlarge) color(navy)) ciopts(color(navy*0.5) lwidth(thick))   /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment, supby(post) /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle) msize(medlarge))  ciopts1(color(red*0.4) lwidth(thick))  estopts2(color(navy) msize(medlarge))  ciopts2(color(navy*0.5) lwidth(thick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Election cycles Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-4(1)2) xscale(range(-4.2 2.2))

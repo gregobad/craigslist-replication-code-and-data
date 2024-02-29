@@ -18,6 +18,7 @@ set more off
 
    use $base/data/master_data_county_level, clear
    
+   collapse (mean) post_CL_ num_ISPs, by(year)
  
    tsset year
    
@@ -37,6 +38,14 @@ set more off
 ***** Time-series of CL visits vs. visits to other classified websites
    
 use $base/data/Comscore/visitcounts	, clear
+
+
+				
+	collapse (sum) craigslistorg_count /*
+			*/ monstercom_count /*
+			*/ ebaycom_count /*
+			*/ realtorcom_count	/*
+			*/ all_count, by(year)
 
 
 foreach var in craigslistorg_count /*
@@ -233,7 +242,7 @@ did_multiplegt cl /*
 			*/ fips  /*
 			*/ year /*
 			*/ post_CL_ /*
-			*/, firstdiff_placebo average_effect robust_dynamic breps(50) /*
+			*/, firstdiff_placebo average_effect robust_dynamic breps(100) /*
 			*/ controls(total log_pop num_ISPs) /*
 			*/ placebo(4) dynamic(4) /*
 			*/ cluster(CL_area_) save_results("$base_results/Figures/Figure_4.dta")
@@ -242,11 +251,18 @@ did_multiplegt cl /*
 preserve
 			use "$base_results/Figures/Figure_4.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment, supby(post) /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(msize(medium) color(navy)) ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle))  ciopts1(color(red*0.4) lwidth(medthick))  estopts2(color(navy))  ciopts2(color(navy*0.5) lwidth(medthick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(medthick))  /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(medthick) ) /*
 		*/  xsize(1.2) ysize(1) /* 
@@ -306,15 +322,22 @@ did_multiplegt jobscount /*
 preserve
 			use "$base_results/Figures/Figure_5a_1.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+			
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment, supby(post) /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle))  ciopts1(color(red*0.4) lwidth(medthick))  estopts2(color(navy))  ciopts2(color(navy*0.5) lwidth(medthick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) rows(1) )  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
-		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-5(1)3)
+		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-5(1)3) 
 			graph export "$base_results/Figures/Figure_5a_1.pdf",  replace	
 
 		cap erase "$base_results/Figures/Figure_5a_1.dta"	
@@ -337,12 +360,19 @@ did_multiplegt jobscount /*
 preserve
 			use "$base_results/Figures/Figure_5a_2.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  supby(post)  /*
 		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(color(navy)) ciopts(color(navy*0.5) lwidth(medthick))   /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle))  ciopts1(color(red*0.4) lwidth(medthick))  estopts2(color(navy))  ciopts2(color(navy*0.5) lwidth(medthick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-5(1)3)
@@ -372,12 +402,18 @@ did_multiplegt circ /*
 preserve
 			use "$base_results/Figures/Figure_5b_1.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
-		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  supby(post)  /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle))  ciopts1(color(red*0.4) lwidth(medthick))  estopts2(color(navy))  ciopts2(color(navy*0.5) lwidth(medthick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-0.02(0.005)0.01)
@@ -402,12 +438,18 @@ did_multiplegt circ /*
 preserve
 			use "$base_results/Figures/Figure_5b_2.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
-		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(color(navy)) ciopts(color(navy*0.5) lwidth(medthick))   /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  supby(post)  /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle))  ciopts1(color(red*0.4) lwidth(medthick))  estopts2(color(navy))  ciopts2(color(navy*0.5) lwidth(medthick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-0.02(0.005)0.01)
@@ -436,12 +478,18 @@ did_multiplegt topic2 /*
 preserve
 			use "$base_results/Figures/Figure_5c_1.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
-		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(color(navy)) ciopts(color(navy*0.5) lwidth(medthick))   /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  supby(post)  /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle))  ciopts1(color(red*0.4) lwidth(medthick))  estopts2(color(navy))  ciopts2(color(navy*0.5) lwidth(medthick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-0.06(0.02)0.02)
@@ -467,12 +515,18 @@ did_multiplegt topic2 /*
 preserve
 			use "$base_results/Figures/Figure_5c_2.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
-		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  supby(post)  /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle))  ciopts1(color(red*0.4) lwidth(medthick))  estopts2(color(navy))  ciopts2(color(navy*0.5) lwidth(medthick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) ylabel(-0.06(0.02)0.02)
@@ -501,12 +555,18 @@ did_multiplegt ihs_congress_name_mentions /*
 preserve
 			use "$base_results/Figures/Figure_5d_1.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
-		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  supby(post)  /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle))  ciopts1(color(red*0.4) lwidth(medthick))  estopts2(color(navy))  ciopts2(color(navy*0.5) lwidth(medthick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2))
@@ -531,12 +591,18 @@ did_multiplegt ihs_congress_name_mentions /*
 preserve
 			use "$base_results/Figures/Figure_5d_2.dta", clear
 			
-			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  /*
-		*/  yline(0, lcolor(gs12) lpattern(dash))  /*
-		*/  eplottype(scatter) estopts(color(navy))  ciopts(color(navy*0.5) lwidth(medthick))   /*
+			gen post=0 if time_to_treat<-1 
+			replace post=1 if time_to_treat>=-1 & time_to_treat!=.
+			
+			label define post 0 "placebo (first diff.)" 1 "dynamic effect"
+			label val post post
+
+			
+			eclplot treatment_effect treatment_effect_lower_95CI treatment_effect_upper_95CI time_to_treatment,  supby(post)  /*
+		*/  eplottype(scatter) estopts1(color(red) msymbol(triangle))  ciopts1(color(red*0.4) lwidth(medthick))  estopts2(color(navy))  ciopts2(color(navy*0.5) lwidth(medthick))  /*
 		*/  yline(0, lcolor(grey*0.4) lpattern(dash) lwidth(thick))  /*
 		*/  xline(-0.5, lcolor(red*0.4) lwidth(thick) ) /*
-		*/  legend(off)  graphregion(fcolor(white)) /*
+		*/  legend(pos(6) row(1))  graphregion(fcolor(white)) /*
 		*/  xtitle("Years Pre/Post CL") ytitle(" ") /*
 		*/  xsize(1.2) ysize(1) /* 
 		*/  xlabel(-5(1)4) xscale(range(-5.2 4.2)) 
